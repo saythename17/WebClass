@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table Example</title>
+        <meta charset="utf-8">
+        <!-- 전세계 모든 언어 지원 : utf-8 -->
+    </head>
+    <body>
+        <table border="17">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>hoshi</td>
+                <td>Left & Right</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>woozi</td>
+                <td>Nice to meet you</td>
+                <td>2020-08-04</td>
+                <!-- 각 행 (row)의 셀 개수가 다를 수 있음 -->
+            </tr>
+        </table>
+
+        <hr>
+
+        <!-- 셀 병합 rowspan : 세로 병합 colspan : 가로 병합-->
+        <!-- span 은 여러줄 이상일때만 비교대상으로 span적용 -->
+        <table border="10" width="50%">
+            <tr>
+                <td rowspan="2">111</td>
+                <td colspan="2">222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>666666666666666</td>
+            </tr>
+
+            <!-- caption : table name -->
+            <caption>Table Title</caption>
+            <!-- : caption 요소는 작성위치에 상관없이 표 상단에 배치 -->
+        </table>
+        
+        <hr>
+
+        <!-- <td> table dat안에 text외의 element 넣기 -->
+        <table border=17 width="50%">
+            <tr width="20%">
+                <td><a href="http://www.naver.com">NAVER</a></td>
+                <td><ul>
+                    <li>aaaa</li>
+                    <li>bbbb</li>
+                    <li>cccc</li>
+                </ul></td>
+            </tr>
+            <tr width=80%>
+                <td width="20%">
+                    <p>테이블 안에 어떤 요소든 넣을 수 있음. 한글이면 자동으로 줄바꿈 됨</p>
+                    <p>dhfaksjdhflaskjdhflaskdjhflaskjdhfadddddfsdfsdfadsfksjdhfakjsdhflaksjdfaasdfjhalsdkfjaaaaaaa</p>
+                 
+                </td>
+                <td width=70%>
+                    <img src="./img/coffee.png" alt="img" width="100%">
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

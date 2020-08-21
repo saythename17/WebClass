@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container{
+                display: flex;
+            }
+            .container>div{
+                background-color: turquoise;
+                width: 100px;
+                margin: 10px;
+                line-height: 50px;
+                text-align: center;
+                
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div>1</div>
+            <div>2</div>
+
+            <!-- 다른 요소들에 비해 0만큼 줄어들겠다 : 난 안줄어들겠다 -->
+            <div style="flex-shrink: 0;">3</div>
+            <div>4</div>
+            <div>5</div>
+
+            <!-- 다른 요소들과 1:1 비율로 줄어들겠다 -->
+            <div style="flex-shrink: 1;">6</div>
+            <div>7</div>
+            <div>8</div>
+
+            <!-- 다른 요소보다 2배 줄어들겠다 -->
+            <div style="flex-shrink: 2;">9</div>
+            <div>10</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body{
+                text-align: center;
+                height: 100%;
+                background-color: black;
+                color: white;
+            }
+            table{
+                margin-left: auto; margin-right: auto;
+                width: 40%;
+                border-collapse: collapse;
+                margin-bottom: 3em;
+            }
+            table caption{
+                margin: 2em;
+                color: rgb(190, 190, 190);
+                border: 2px solid rgb(148, 148, 148);
+                border-radius: 17px;
+            }
+
+
+
+
+            div{
+                position: absolute;
+                bottom: 2em;
+                left: 48%;
+                text-align: center;
+            }
+            img{
+                width: 40px;
+                padding: 5px;
+                background-color: white; border-radius: 25px;}
+            a{color: white; text-decoration: none;}
+
+        </style>
+    </head>
+
+    <body>
+        <form action="#">
+            <table border="3">
+                <caption>Shopping Cart</caption>
+                <tr>
+                    <th>품목</th>
+                    <th>가격</th>
+                    <th>수량</th>
+                    <th>합계</th>
+                </tr>
+                <tr>
+                    <td>컴퓨터 세트</td>
+                    <td>2,000,000원</td>
+                    <td>
+                        <input type="number" min="0" step="1" value="0">
+                    </td>
+                    <td>
+                        <input type="text" size="3" value="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>티셔츠</td>
+                    <td>50,000원</td>
+                    <td>
+                        <input type="number" min="0" step="1" value="0">
+                    </td>
+                    <td>
+                        <input type="text" size="3" value="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>음악파일</td>
+                    <td>1000원</td>
+                    <td>
+                        <input type="number" min="0" step="1" value="0">
+                    </td>
+                    <td>
+                        <input type="text" size="3" value="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>영화 다운로드</td>
+                    <td>8,000원</td>
+                    <td>
+                        <input type="number" min="0" step="1" value="0">
+                    </td>
+                    <td>
+                        <input type="text" size="3" value="0">
+                    </td>
+                </tr>
+            </table>
+
+            <input type="button" value="계산">
+            <input type="submit" value="구매">
+            <input type="reset" value="초기화">
+        </form>
+        <div style="text-align: center;">
+            <a href="./01index.html">
+                <img src="./images/icons8-film-reel-96.png" alt="Home">
+                <br> <b>Web shop</b>
+            </a>
+        </div>
+    </body>
+</html>

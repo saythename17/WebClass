@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog</title>
+
+    <script>
+        function print(a){
+            document.write(a+'</br>')
+        }
+        alert('This is alert dialog. ')
+        alert('Notify!!!')//여러개의 dialog가 있으면 차례로 실행
+        
+        //User의 선택(확인or취소)을 받는 Dialog
+        var answer=confirm('종료하시겠습니까?')
+        //선택결과는 함수의 리턴 값 : true/false로 전달됨
+        print(answer)
+
+        //사용자 입력 (입력값-string)
+        //단, 취소를 누르면 null이 리턴됨 - 값을 입력하지 않으면 ""  (빈 문자열)리턴
+        //두번째 파라미터 : input영역안 기본값 지정
+        var age=prompt('당신의 나이를 입력하세요','input here..')
+        print(age)
+
+        function aaa(){
+            document.write('화면 갱신')
+        }
+    </script>
+</head>
+<body>
+    <button onclick="aaa()">CLEAR</button>
+    
+</body>
+</html>

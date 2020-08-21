@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>File API</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <!-- File API 사용자의 컴퓨터에 파일을 읽기(쓰기는 보안상 금지되어 있음) -->
+
+        <input type="file" id="in1" multiple><!--multiple : 다중 선택 속성(여러개 선택 가능)-->
+        <button onclick="aaa()">파일 읽기</button>
+        <textarea id="ta" cols="30" rows="10"></textarea>
+
+        <script>
+            function aaa(){
+                in1=document.getElementById('in1')
+                var v=in1.value//vlaue 속성값 = file's fakepath
+                alert(v)
+                //파일입출력을 하려면 실제 경로 필요
+                var files=in1.files //FileList 객체(File객체들의 배열)[배열이기에 여러개 선택이 가능]
+                //PHP의 file정보 배열과 비슷한 개념
+                alert(files[0].name + "\n" + files[0].size + "\n" + files[0].type)
+                // dialog에서 줄바꿈 : \n
+
+                //FileReader 객체 생성
+                var fr=new FileReader()
+
+                //(Read명령이 비동기 방식이기에)읽으라는 명령전에 읽은 결과를 받는 콜백함수 지정
+                fr.onload=function(){
+                    document.getElementById('ta').innerHTML=fr.result
+                }
+
+
+
+                //fileReader에게 data를 text로 읽어달라고 요청(비동기 방식)
+                fr.readAsText(files[0],'utf-8')
+            }
+        </script>
+        <hr>
+
+        <h2>Image File Read</h2>
+        <input type="file" id="in2">
+        <button onclick="bbb()">이미지 읽기</button>
+        <br>
+        <img src="" alt="" id="bb" style="border: black 4px solid; max-width: 500px;">
+
+        <script>
+            function bbb(){
+                //선택한 파일로부터 파일정보객체 얻어오기
+                var files=document.getElementById('in2').files//file배열
+                //file reader 객체 생성
+                var fr=new FileReader()
+                //아래의 파일읽은결과를 콜백으로 받는 함수
+                fr.onload=function(){
+                    document.getElementById('bb').src=fr.result
+                }
+
+
+                //파일의 데이터를 URL(경로)로 읽어오기 
+                fr.readAsDataURL(files[0])
+
+            }
+        </script>
+    </body>
+</html>

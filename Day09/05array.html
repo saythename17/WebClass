@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Array</title>
+
+    <script>
+        //배열의 2가지 생성방법
+        //1. literal array
+        var arr=[1,2,3,'alien','elephant',true,Date()]//동적자료형 언어이기에 배열의 각 요소의 자료형이 달라도 됨
+        document.write(arr+'<br>')
+        for(var i=0;i<arr.length;i++){
+            document.write(arr[i]+'<br>')
+        }
+        document.write('<hr>')
+
+        //배열의 방번호가 틀려도 에러 X
+        document.write(arr[100]+'<br>')//undefined
+
+        //배열의 길이가 변경될 수 있음!!
+        document.write(arr.length+'<br>')
+        arr[100]=100//배열의 5번 index 생성, 100대입--- 자동으로 대입되지 않은 index도 만들어짐
+        document.write(arr.length+'<br>')
+
+        document.write('<hr>')
+
+
+
+
+        //2. Array object
+        var arr=new Array(10,'aaa',true)
+        for(var i=0; i<arr.length; i++){
+            document.write(arr[i]+'<br>')
+        }
+        document.write('<br>')
+
+        // for-each 문
+        for(var index in arr){//index변수는 요소값이 아닌 ※방번호
+            document.write(arr[index]+'<br>')
+        }
+        document.write('<br>--------------------------')
+
+        //배열객체를 만들고 나중에 요소 추가 가능
+        var arr2=new Array()
+        arr2[0]=10
+        arr2[1]=20
+        arr2[2]=30
+        for(var i in arr2){
+            document.write(arr2[i]+",")
+        }
+        document.write('<hr>')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //3.연관배열 -- 'key' instance of Index
+        var arr3=new Array();
+        arr3['aa']='rose';
+        arr3['bb']='blue';
+        arr3['cc']='berry';
+
+        document.write(arr3['aa']+'<br>')
+        document.write(arr3['bb']+'<br>')
+        document.write(arr3['cc']+'<br>')
+
+        //리터럴 배열로 만들기
+        var arr4=[];
+        arr4['aa']='rose';
+        arr4['bb']='blue';
+        arr4['cc']='berry';
+
+        document.write(arr4['aa']+'<br>')
+        document.write(arr4['bb']+'<br>')
+        document.write(arr4['cc']+'<br>')
+        document.write('<hr>')
+        
+        //만들면서 값대입
+        var arr5={'aa':3.14, 'bb':true}//연관배열
+        document.write(arr5['aa']+'<br>')
+        document.write(arr5['bb']+'<br>')
+        document.write('<hr>')
+        var p={aa:10,bb:20}//객체
+
+        //연관배열과 객체는 거의 같은 메모리 구조
+        //연관배열의 각 요소값제어를 마치 객체 멤버변수 다루듯이 
+        document.write(arr5.aa +"<br>")
+        document.write(arr5.bb +"<br>")
+        document.write('<hr>')
+
+        //연관배열을 사용하는 특별한 기법
+        //<form>요소 안에 있는 input 요소들의 값 제어시 매우 유용하게 코딩
+        
+
+
+
+
+    </script>
+</head>
+<body>
+    <!-- form 요소와 input요소들을 연관배열로 접근하는 특별한 방식 -->
+    <form action="#" name="aa">
+        <input type="text" name="in1"><br>
+        <input type="text" name="in2"><br>
+        <input type="text" name="in3"><br>
+    </form>
+
+    <br>
+
+    <form action="#" name="bb">
+        <input type="text" name="in1"><br>
+        <input type="text" name="in2"><br>
+        <input type="text" name="in3"><br>
+    </form>
+
+    <script>
+        //input 요소 <in1> 찾기
+        // document.getElementsByName('in1')[0].value='I can do thsi all day.';
+        // ↓
+        //웹 문서안 form요소들은 document객체의 멤버변수로 관리됨
+        document.forms[0][0].value='I can do thsi all day.'//첫번째 form 요소의 첫번째 input요소
+        document.forms['aa']['in2'].value='I love you three thousands.'//name속성이 aa인 form요소의 name속성이 in1인 input요소
+
+        //연관배열 - 객체 멤버변수처럼
+        document.aa.in3.value='Hale Hydra'//aa.in3==aa['in3']
+
+        //연관배열의 key는 문자열이므로 문자합성 가능
+        for(var i=1;i<document.bb.length+1;i++){
+            document.bb['in'+i].value=i
+        }
+        document.write('<hr>')
+        //input요소들의 연관배열도 멤버변수처럼 
+    </script>
+
+    <!-- 2차원 배열 -->
+    <script>
+        var arr7=new Array()
+        var a1=[10,20,30]
+        var a2=["a","b","c"]
+        var a3=[true,false,3.14]
+        
+
+        arr7[0]=a1
+        arr7[1]=a2
+        arr7[2]=a3
+        document.write(arr7[0][0]+'<br>')
+
+        for(var i=0; i<arr7.length;i++){
+            for(var k=0; k<arr7[i].length;k++){
+                document.write(arr7[i][k]+",")
+            }
+            document.write('<br>')
+        }
+        document.write('<hr>')
+    </script>
+</body>
+</html>

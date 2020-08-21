@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>form example</title>
+    </head>
+
+    <body>
+        <!-- form element : ≒anchor 다른 문서를 실행. +)*데이터 전달 가능 -->
+        <!-- 1. GET method Form -->
+        <form action="./getTest.php" method="GET">
+        <!-- form method=default: GET -->
+            <input type="text" name="title">
+            <input type="text" name="msg">
+            <input type="submit">
+            <!-- submit : 버튼을 클릭하면 form요소의 action속성에 지정된 문서 실행(즉, 브라우저의 현재 페이지가 바뀜) -->
+        </form>
+
+
+        <hr>
+        <!-- 2. POST method Form -->
+        <form action="./postTest.php" method="POST">
+            <fieldset>
+                <legend>POST method input test</legend>
+                <label for="name"> name : </label>
+                <input type="text" id="name" name="name"><br>
+                <label>password : <input type="password" name="pw"></label><br>
+                <p>
+                    gender:
+                    <label><input type="radio" name="rg" value="male" checked="checked">male</label>
+                    <label><input type="radio" name="rg" value="female">female</label>
+                </p>
+
+                <p>
+                    fruits:
+                    <label><input type="checkbox" name="fruits[]" value="apple" checked>Apple</label>
+                    <!-- 여러개의 선택된 값을 전달하려면 배열[]로 name설정  checked : 임의 check지정-->
+                    <label><input type="checkbox" name="fruits[]" value="orange" checked=>Orange</label>
+                    <label><input type="checkbox" name="fruits[]" value="banana">Banana</label>
+                </p>
+
+                <p>
+                    message:
+                    <textarea name="msg" cols="40" rows="5"></textarea>
+                </p>
+
+                <div>
+                    <select name="sel">
+                        <optgroup label="Brand">
+                            <option value="현대">현대</option>
+                            <option value="기아">기아</option>
+                            <option value="쉐보레">쉐보레</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <br>
+                <div>
+                    <input type="submit">
+                    <input type="reset">
+                </div>
+
+                <!-- 화면에 보이지 않는 데이터를 서버에 보내기 -->
+                <input type="hidden" name="aa" value="good">
+            </fieldset>
+        </form>
+    </body>
+</html>

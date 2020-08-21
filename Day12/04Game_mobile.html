@@ -1,0 +1,365 @@
+<html>
+    <head>
+        <title>-Fire Game-</title>
+        <meta charset="utf-8">
+        <!-- <meta name="viewport" content="width=device-width, height=670, initial-scale=1.0"> -->
+        <style>
+            body{padding: 0; margin: 0; text-align: center;}
+            canvas{                
+                padding: 0;
+                margin: auto;margin-top: 20px;
+                display: block;
+                border-radius: 5px;
+            }
+            p{
+                text-align: center;
+            }
+            button{
+                display: inline-block;
+                width: 150; height: 50;
+                border-radius: 16px;
+                font-family: "fun", fantasy; font-size: 18;
+                border: 2px solid black 16px;
+                background-color: rgb(160, 191, 248);
+                color: black;
+                outline: 0;
+            }
+            @font-face {
+                font-family: fun;
+                src: url('./FunSized.ttf');
+            }
+            button:hover{
+                background-color: cornflowerblue;
+                border: 2px solid honeydew 16px;
+                color: honeydew;
+            }
+            button:active{
+                background-color: rgb(89, 125, 192);
+                outline: 0;
+
+            }
+            button.key{
+                display: inline-block;
+                width: 90; height: 80;
+                border-radius: 16px;
+                font-family: "fun", fantasy, cursive; font-size: 20; 
+                font-weight: 900;
+                border: 4px solid black 16px;
+                background-color: rgb(255, 191, 201);
+                color: black;
+                outline: 0;
+            }
+            button.key:active{
+                background-color: rgb(235, 161, 172);
+            }
+            #left{
+                margin-right: 80; 
+            }
+            #right{
+                margin-left: 80;
+            }
+            #ctrlKey{
+                margin-bottom: 80px;
+            }
+        </style>
+        <script>
+            //게임에 사용될 이미지들 전역변수로
+            var imgBack=new Image() //background
+            imgBack.src="./storeback.jpg"
+
+            var imgPlayer=new Image() //플레이어 이미지
+            imgPlayer.src="./player1.png"
+
+            var imgLife=new Image()
+            imgLife.src="./life.png"
+
+
+            //플레이어가 그려질 좌표(이미지의 가운데 좌표)
+            //이미지가 놓여지는 곳의 default : 이미지의 좌상단. 가운데로 맞추려면 이미지 사이즈 x,y축의 절반값을 빼야
+            var x=250, y=550//화면의 정 가운데
+            var w=50, h=50//이미지의 절반 너비 & 높이
+
+            var dx=0,dy=0;// 플레이어의 이동속도와 방향결정
+
+            var canvas;//도화지
+            var context;//화가 객체
+
+            //목숨
+            var life1=true
+            var life2=true
+            var life3=true
+            var score=0
+            var crash=0
+            
+
+            //재앙 떨어뜨리기
+            var imgEnemy= new Image()
+            imgEnemy.src="./fire.png"
+
+            //재앙 부딪혔을때
+            var imgBAM= new Image()
+            imgBAM.src="./bam.png"
+            var imgBAM2= new Image()
+            imgBAM2.src="./bam2.png"
+
+            //음식 떨어뜨리기
+            var imgFood=new Image()
+            imgFood.src="./ham.png"
+            var imgFood2=new Image()
+            imgFood2.src="./steak.png"
+
+            //재앙 이미지 객체들
+            var enemies=new Array()
+            
+            //음식 이미지 객체들
+            var foods=new Array()
+            var foods2=new Array()
+    
+
+            
+
+
+
+            function loaded(){//body의 loading이 완료되었을때 실행되는 함수(head가 body보다 먼저 실행되기에 load가 끝난뒤 작업)
+                canvas=document.getElementById('c1')
+                context=canvas.getContext('2d')
+
+                //Text setting
+                context.font="19px fantasy"
+
+                runGame()
+                //10 mills마다 runGame() 실행
+                window.setInterval(runGame, 10)
+                // var p=Math.floor(Math.random()*2000)
+                // window.setInterval(makeFood,p)
+
+                
+            }
+
+            //게임을 실행시키는 함수
+            function runGame(){
+                if(score<100) imgPlayer.src="./player1.png"
+                else if(score>=100 && score<200) imgPlayer.src="./player2.png"
+                else if(score>=200 && score<500) imgPlayer.src="./player3.png"
+                else if(score>=500) imgPlayer.src="./player4.png"
+                //Make Enemy
+                var p=Math.floor(Math.random()*55) //0~54
+                if(p==0) makeEnemy()
+
+                var f=Math.floor(Math.random()*150) //0~149
+                if(f==0) makeFood()
+
+                var f2=Math.floor(Math.random()*1000)
+                if(f2==0) makeFood2()
+
+                if(!life3) {
+                    imgPlayer.src="./dead.png"
+                    if(score>100) imgBack.src="./ending.jpg"
+                    else imgBack.src="./eggending.jpg"
+                }
+                
+
+                //Move the image(좌표변경)
+                x+=dx; y+=dy
+
+                //충돌체크
+                checkCollision()
+
+                //Draw the image
+                context.drawImage(imgBack,0,0,500,600)
+                context.drawImage(imgPlayer,x-w,y-h,80,80)
+                
+
+                //Draw enemies
+                enemies.forEach(function(e){
+                    if(!e.isDead) {
+                        context.drawImage(imgEnemy,e.x-30,e.y-30,60,60) 
+                    }
+                    else {//Drow crash effect
+                        if(!life3) context.drawImage(imgBAM2,e.x-30,e.y-30,80,80)
+                        else context.drawImage(imgBAM,e.x-30,e.y-30,60,60)                        
+                    }
+                })
+
+                //Draw Life               
+                if(life1) context.drawImage(imgLife,390,10,30,30)
+                if(life2) context.drawImage(imgLife,425,10,30,30)
+                if(life3) context.drawImage(imgLife,460,10,30,30)
+
+                //Draw Score
+                context.strokeText('Score  : ',20,30)
+                context.fillText(score,85,30)
+
+                //End Game
+                if(!life3) {
+                    return
+                }
+
+                
+                
+
+                //플레이어가 화면밖으로 나가지 않도록
+                //자동 튕겨지기
+                //if(x >= 500-w+35 || x <= w-15) dx= -dx
+                //if(y >= 600-h+30 || y <= h-10) dy= -dy
+                if( x >= 500-w+35) x= 500-w+35;
+                if( x <= w-15) x= w-15;
+                if( y >= 600-h+30) y= 600-h+30;
+                if( y <= h-10) y= h-10;
+
+                enemies.forEach(function(e){
+                    e.y +=e.dy
+                })
+
+
+                foods.forEach(function(e){
+                    if(!e.isEat) context.drawImage(imgFood,e.x-25,e.y-25,50,50)
+                    e.y +=e.dy
+                })
+                foods2.forEach(function(e){
+                    if(!e.isEat) context.drawImage(imgFood2,e.x-25,e.y-25,50,50)
+                    e.y +=e.dy
+                })
+
+                dx=0; dy=0
+            }
+
+            //키보드 눌렀을때
+            function keyDown(){
+                if(!life3) return
+                var keycode=event.keyCode
+                switch(keycode){
+                    case 37: dx=-5; break//left
+                    case 38: dy=-5; break//up
+                    case 39: dx=5; break//right
+                    case 40: dy=5; break//down
+                }
+            }
+
+            //키보드 뗐을때
+            function keyUp(){
+                var keycode=event.keyCode
+                if(keycode>=37 && keycode<=40){
+                    dx=0; dy=0
+                }
+            }
+
+
+            //재앙 만들기
+            function makeEnemy(){
+                //현재 적군 객체개수
+                var n=enemies.length
+                var ranX=Math.random()*500 //0~499
+                var speed=Math.random()*4+1//1~5
+                enemies[n]={
+                    x: ranX,
+                    y: -30,
+                    dy: speed,
+                    isDead: false
+                }
+            }
+
+
+            //음식 만들기
+            function makeFood(){
+                var n=foods.length
+                var ranX=Math.random()*500
+                var speed=Math.random()*3+1
+                foods[n]={
+                    x: ranX,
+                    y:-25,
+                    dy:speed,
+                    isEat:false
+                }
+            }
+            function makeFood2(){
+                var n=foods2.length
+                var ranX=Math.random()*500
+                var speed=Math.random()*6+1
+                foods2[n]={
+                    x: ranX,
+                    y:-25,
+                    dy:speed,
+                    isEat:false
+                }
+            }
+
+
+            //reset
+            function resetGame(){
+                location.reload(true)         
+            }
+
+
+            //충돌 체크
+            function checkCollision(){
+                enemies.forEach(function(e){
+                if( !e.isDead &&
+                    e.x+5 > x-w && e.x+15 < x+w &&
+                    e.y+5 > y-h && e.y < y+h+5){
+                        e.isDead=true
+                        removeLife();
+                    }     
+                })
+                foods.forEach(function(e){
+                    var a=x-e.x
+                    var b=y-e.y
+                    var r=Math.sqrt(Math.pow(a,2)+Math.pow(b,2))
+
+                    if(r<=65 && !e.isEat){
+                        e.isEat=true 
+                        addScore()                                    
+                    }
+                })
+                foods2.forEach(function(e){
+                    var a=x-e.x
+                    var b=y-e.y
+                    var r=Math.sqrt(Math.pow(a,2)+Math.pow(b,2))
+
+                    if(r<=65 && !e.isEat){
+                        e.isEat=true 
+                        addScore2()                                    
+                    }
+                })
+                
+            }
+
+            //X_X
+            function removeLife(){
+                    console.log('aaa')//콘솔창에 로그찍기
+                    if(life1) life1=false
+                    else if(life2) life2=false
+                    else if(life3) life3=false                  
+                }
+
+            //점수 +
+            function addScore(){
+                score=score+10
+            }
+            function addScore2(){
+                score=score+50
+            }
+
+
+            //button move
+            function left(){dx=-30; return}
+            function right(){dx=30; return}
+            function up(){dy=-30; return}
+            function down(){dy=30; return}
+            
+
+        </script>
+    </head>
+    <body onload="loaded()" onkeydown="keyDown()" onkeyup="keyUp()">
+        <canvas id="c1" width="500" height="600" style="border: 2px solid black;"></canvas>
+        <p>
+            <button onclick="resetGame()">Try Again</button>
+        </p>
+        <p id="ctrlKey"><!--⏶⏴⏵⏷-->
+            <button onclick="up()" class="key">&UpArrow;</button><br>
+            <button onclick="left()" class="key" id="left">&LeftArrow;</button>
+            <button onclick="right()" class="key" id="riight">&RightArrow;</button><br>
+            <button onclick="down()" class="key">&DownArrow;</button>
+        </p>
+    </body>
+</html>

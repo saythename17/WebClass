@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test about element's parent's size</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <!-- 부모요소의 height은 언제나 자식의 height을 감싸지 않음 -->
+
+        <!-- block in block -->
+        <div style="background-color: rgb(174, 230, 230); border: 50px dotted dodgerblue;">
+            <p style="padding: 20px;">Hello</p>
+        </div>
+        <br><br><br>
+
+        <!-- inline in block -->
+        <!-- 부모요소 height < 자식요소 height ::: overflow ::: -->
+        <div style="background-color: khaki; border: 5px dotted dodgerblue;">
+            <!-- inline요소에 padidng, margin을 주는것으로 부모의 height도 함께 변하지X
+            inline element : 부모가 content취급 (child size> parent size==overflow)-->
+            <a href="#" style="padding: 20px; color: dodgerblue; border: 1px double gold;">NICE</a>
+            <em style="margin: 10px;">good</em>
+            <strong style="height: 50px; border: 1px double goldenrod;">wow</strong>
+
+            <!-- inline-block -->
+            <input type="text" style="margin: 10px;">
+            <img src="../Day07/images/icons8-night-wind-100.png" alt="image" style="padding: 2em;">
+        </div>
+    </body>
+</html>

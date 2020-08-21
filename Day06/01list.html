@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List Style</title>
+        <meta charset="utf-8">
+        <style>
+            /* unordered list */
+            ul.aa{list-style-type: disc;}
+            ul.bb{list-style-type: circle;}
+
+            /* list-style-position */
+            ul.cc{list-style-type: square; list-style-position: inside;}
+            /*outside : default / inside : 들여쓰기*/
+
+            /* list의 블릿기호를 이미지로 (잘 사용안함--이미지 사이즈 지정불가)*/
+            ul.dd{
+                list-style-image: url(../Day05/icons8-diamond-heart-96\ \(1\).png);
+                list-style-position: inside;
+            }
+
+            /* ordered list */
+            ol#ee{ list-style: lower-alpha;}
+            ol#rr{ list-style: lower-greek;}
+            ol#oo{ list-style: lower-roman;}
+            ol#ww{ list-style: upper-roman;}
+            ol#qq{ list-style: decimal-leading-zero;}/*10진수표기 01~*/
+
+
+
+        </style>
+    </head>
+
+    <body>
+        <!-- unordered list -->
+        <ul class="aa">
+            <li>Html5</li>
+            <li>Css3</li>
+            <li>Javascript</li>
+        </ul>
+
+        <ul class="bb">
+            <li>Html5</li>
+            <li>Css3</li>
+            <li>Javascript</li>
+        </ul>
+
+        <ul class="cc">
+            <li>Html5</li>
+            <li>Css3</li>
+            <li>Javascript</li>
+        </ul>
+
+        <ul class="dd">
+            <li>Html5</li>
+            <li>Css3</li>
+            <li>Javascript</li>
+        </ul>
+
+        <!-- ordered list -->
+        <ol id="ee">
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+        <ol id="rr">
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+        <ol id="oo">
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+        <ol id="ww">
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+        <ol id="qq">
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+    </body>
+</html>

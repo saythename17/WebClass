@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS 기본문법</title>
+
+        <!-- style sit 작성 작업 : 웹 문서(HTML)에 스타일 적용 (스타일 지정 언어 : CSS3)-->
+        <style>
+            /* 이 style요소 안에서는 css문법체계를 따름 */
+            /* 주요용어  selector, property, value */
+
+            /* seletor */
+            /* 1. Type(Element) Selector */
+            h2{color: chocolate; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+            p{color: cadetblue; font-family: fantasy;}
+
+            /* 2. Universal Selector */
+            /* 가장 우선순위가 낮음 */
+            *{color: darksalmon; font-style: oblique;}
+            /*같은 요소에 '같은 스타일' 적용시 더 범위가 좁은 선택자가 우선적용됨
+            다른 스타일을 적용한다면 그대로 적용됨*/
+
+            /* 3. ID Selector */
+            /* 가장 우선순위가 높음 */
+            #ph-1{color: darkslateblue;}
+
+            /* 4. Class(Group) Selector */
+            .A{color: darkviolet;}
+            /* Priority: Class>Type */
+            p.A{color: lightslategrey;}
+            /* elements==p && class==A  */
+
+            /* 5. Selector Group */
+            li, a{color: lightsteelblue; font-style: normal;}
+
+            /* 6. Combinator : Descendant selector, (Child Selcetor) */
+            #div>p{color: pink;}
+            /* parent[>]child */
+            #div p{font-family: serif; font-style: normal;}
+            /* [ ] : 자식포함자손모두 */
+            p.aa{}/* p요소중 class속성값이 aa인 요소 선택 */
+            p .aa{}/* p요소의 자손들중에서 class속성이 aa인 요소들 선택 */
+            #kk ul.gg>li{background-color: thistle; color: grey; font-family: cursive;}
+            /* id==kk의 자손 && class==gg의 child */
+            
+            /* 7. Attribute Selector */
+            p[class]{font-size: 30px;}/*class 속성을 가지고 있는 p 요소*/
+            /* img[src="aa.png"]{} */
+            div[id="div"]{font-size: 30px;}
+
+            /* 8. psuedo Selector */
+            /* 브라우저에 따라 지원되는 것이 다름 */
+            a:link{color: lightseagreen;}
+            a:visited{color:teal;}
+            a:hover{color: orange;}
+            /* :hover는 반드시 :link, :visited 뒤에 작성해야함 */
+            a:active{color:orangered;}
+            /* :active는 반드시 :hover 뒤에 작성해야함 */
+            #kk{border: 1px dashed yellowgreen;}
+            #kk ul{border: 1px dashed blue;}
+
+            #kk ul li:first-child{color: palevioletred; font-size: 30px; border: 1px dashed red;}
+            #kk ul li:nth-child(2){color: palevioletred; font-size: 30px; border: 1px dashed red;}
+            #kk ul li:last-child{color: palevioletred; font-size: 30px; border: 1px dashed red;}
+
+            /* 수식이용->n번째 자식 스타일 제어*/
+            table tr:nth-child(2n+1){background-color: skyblue;}
+            /* n:자동으로 0~table row만큼 반복문을 돌림 */
+        </style>
+    </head>
+
+    <body>
+        <!-- 1. Type(element) Selector, 2. All Selector , 3. ID Selector , 4. Class Selector -->
+        <h2 class="A">CSS Seletor Test</h2>
+        <p id="ph-1">Hello CSS World</p>
+        <p class="A">Nice to meet you.</p>
+
+        <!-- 5. Selector Group-->
+        <ul>
+            <li>AAA</li>
+            <li>BBB</li>
+            <li>CCC</li>
+        </ul>
+
+        <a href="http://www.naver.com">NAVER</a>
+
+        <!-- 6. Child Selector, Descendant selector-->
+        <div id="div">
+            <h4>Region</h4>
+            <p>Hello world</p>
+
+            <div>
+                <p>Apple</p>
+                <p>Orange</p>
+                <p>Banana</p>
+            </div>
+        </div>
+
+        <!-- 복잡한 선택자 구조 연습 -->
+        <div id="kk" style="background-color: blanchedalmond;">
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <ul class="gg">
+                    <li>qqq</li>
+                    <li>www</li>
+                    <li>rrr</li>
+                    </ul>
+                
+            </ul>
+            <ul class="gg">
+                <li>qqq</li>
+                <li>www</li>
+                <li>rrr</li>
+            </ul>
+
+        </div>
+        
+        <!-- 8. 의사,의도(psuedo: 가짜) 선택자 -->
+        <a href="http://www.goole.com">Google</a>
+
+        <!-- 수식을 이용한 n번째 자식 스타일 -->
+        <table border="1">
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>aa</td>
+                <td>bb</td>
+                <td>cc</td>
+                <td>dd</td>
+            </tr>
+        </table>
+        
+
+    </body>
+</html>

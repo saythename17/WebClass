@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker -PWA(Progresive Web App)의 필수 기술</title>
+
+    <script>
+        function aaa(){
+            var n=0
+            while(true){
+                n++
+                document.getElementById('hh').innerHTML=n
+                //무한반복중->출력X
+            }
+        }
+       
+    </script>
+</head>
+<body>
+    <!-- worker : Android's new Thread와 같은 역할 -->
+    <button onclick="aaa()">무한반복</button>
+    <hr>
+    <h2 id="hh">결과</h2>
+
+    <button onclick="bbb()">Web Worker Start!</button>
+    <button onclick="ccc()">Web Worker Close!</button>
+
+    <script>
+         var w
+        function bbb(){
+            //web worker는 server에서만 동작(주소가 http로 시작하는)
+
+
+            if(w==undefined){//워커객체가 없는지 확인
+                w=new Worker('./worker.js')//Thread와 같은 역할, 생성하면 자동 run
+                //별도 문서에 생성
+
+                //worker가 post로 보낸 메세지 받기
+                w.onmessage=function(event){
+                    document.getElementById('hh').innerHTML=event.data
+                }
+            }
+        }
+
+        function ccc(){
+            w.terminate()
+            w=undefined
+        }
+    </script>
+</body>
+</html>

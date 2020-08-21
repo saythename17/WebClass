@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display , Position</title>
+        <meta charset="utf-8">
+
+        <style>
+            /* Display attribute */
+            /* block element -> inline element */
+            /* inline element can't set own's width */
+            #aa{display: inline; width: 300px;}
+            #aa{display: inline-block; width: 300px;}
+
+            /* inline -> block */
+            img{display: block;}
+
+            /* display=none - [ in Android : visibility=gone]*/
+            li{display: inline; margin-right: 20px;}/*li의 display를 inline으로 하면 블릿 기호 없어짐*/
+            /* li.bb{display: none;}공간도 함께 사라짐 */
+
+            li.bb{visibility: hidden;}/* 공간은 차지 하되 보이지 않음*/
+
+            div.div,#p{background-color: tomato; border: solid; padding: 5px;}
+            span{background-color: teal; border: solid; padding: 5px;}
+            div.po{position: relative; height: 600px;}
+        </style>
+
+
+
+
+        <!-- position -->
+        <style>
+            #one{
+                background-color: gold;
+                width: 200px;
+                height: 50px;
+            }
+            /* 1)static : default-- 좌표값 지정 불가
+               2)relative : default에서 특정좌표로 이동한 값
+               3)absolute : html 문서의 좌상단 기준 //  부모의 요소가 position="static"이 아니면 부모의 좌상단을 기준으로 함
+               - 좌표값 지정을 안했을 때? 문서제일 끝에 배치
+               4)fixed : 웹사이트 광고, FAB같은 포지션 /  좌표값 지정 안하면 화면에 안나옴*/
+            #two{
+                position: relative;
+                left: 50px;/*왼쪽으로 50px떨어진 곳에 배치*/
+                top: 30px;
+
+                background-color: goldenrod;
+                width: 200px;
+                height: 50px;
+            }
+            #three{
+                position: absolute;
+                left: 200px;
+                top: 50px;
+                
+                background-color: orange;
+                width: 200px;
+                height: 50px;
+            }
+            #four{
+                position: fixed;
+                right: 10px;
+                top: 10px;
+
+                background-color: peru;
+                width: 200px;
+                height: 50px;
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <p id="aa">Hello world</p>
+        <a href="#"> Good Day</a>
+        <strong>Good morning</strong>
+        <img src="../Day05/icons8-diamond-heart-96 (1).png" alt="heart">
+        <hr>
+
+        <ul>
+            <li>aaa</li>
+            <li class="bb">bbb</li>
+            <li>ccc</li>
+        </ul>
+        <hr>
+
+        <!-- 블럭요소와 인라인요소를 같이 사용할 때 고려할 것들 -->
+        <!-- 블럭요소안에 다른 블럭, 인라인 요소를 자식으로 가질 수 있음 -->
+        <div class="div">Nice <p>another block element</p> world</div>
+       
+
+        <!-- ※인라인 요소안 블럭요소 X -->
+        <span>Nice <p>another block element</p> world</span>
+
+        <!-- ※블럭요소안에 같은 블럭요소-X -->
+        <p id="p">Nice <p>another block element</p> world</p>
+        <h2>Hello <h2>Nice</h2> world</h2>
+
+        <!-- 가급적 요소안에 요소를 넣을때는 들여쓰기를 명시적으로 하시오 -->
+        <div class="div">
+            <h1>aaaa</h1>
+            <p>bbbbbbbbb</p>
+        </div>
+        <hr>
+
+
+        <!-- position  -->
+        <div class="po">
+            <p id="one">block #1</p>
+            <p id="two">block #2</p>
+            <p id="three">block #3</p>
+            <p id="four">block #4</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module</title>
+    <!-- module : JS문서안에서 다른 JS문서의 함수나 변수를 사용
+         문서안에있는 코드들을 재사용하여 프로젝트의 제작속도를 향상시킴 
+         원래 HTML을 통해 묶여져 있지 않으면 .js끼리 서로 묶여서 쓸 수 없음
+         but React Native App(하이브리드)에서는 .js만으로 앱을 만듬
+         -> script 속성에 module이라는 타입을 지정하여 테스트-->
+    <script type="module">
+        //import show from './module.js'//**웹 서버에 올려야 가능
+        //default로 export한게 아니면 반드시 구조분해할당(과 비슷한) 문법 필요
+        // import {aaa,num} from './module.js'
+        // import {age as a} from './module.js'
+
+        import show,{aaa,age as a,num} from './module.js'//축약
+        show()
+        aaa()
+        alert(num)
+        alert(a)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

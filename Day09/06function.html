@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+
+
+    <script>
+
+        //함수의 선언과 호출(선언적 함수)
+        function aaa(){
+            document.write('aaa<br>')
+        }
+        aaa() //JS함수 호출(일반적으로는 클릭이벤트같은 처리에 호출문 작성)
+
+        //JS특이점 - 선언과 호출 순서가 상관 X(단, 같은 .js문서(같은 <script>요소)안에서)
+        bbb()
+        function bbb(){
+            document.write('bbb<br>')
+        }
+
+
+        ccc();//호출불가 [다른.js(다른 script)일 때는 선언을 먼저해야함]
+        ddd();//body에 있는 함수를  head에서 호출 할 수 없음
+
+    </script>
+
+    <!-- 같은 html문서 안에 있지만 위 script와 다른 문서로 인식 -->
+    <script>
+        bbb()//저위에 <script>가 html에 적용되어 있기에 인식가능
+
+        function ccc(){
+            document.write('ccc<br>')
+        }
+    </script>
+
+
+
+
+    <!-- 파라미터 전달 -->
+    <script>
+        document.write('<hr> <h4>Parameter</h4>')
+
+        function eee(a){//인수로 받는 파라미터는 'var'키워드를 사용하면 X
+            document.write(a+'<br>')
+        }
+        eee(10)
+        eee('새')
+        eee(new Date())
+        eee()//undefined
+
+        //매개변수 2개도 가능
+        function fff(a,b){
+            if(a==undefined || b==undefined){
+                //parameter에 값이 전달되지 않는다면
+                document.write('Wrong Input<br>')
+                return
+            }
+
+            document.write(a+' + ')
+            document.write(b+' = ')
+
+            
+            var c=a+b;
+            document.write('Result : '+c+'<br>')
+        }
+
+        fff(5,3);
+        fff(5)
+        fff('bi','rd')
+
+
+
+
+        //같은 이름의 함수가 또 선언되면 덮어쓰기 됨
+        function zzz(a){
+            document.write('원래 함수')
+        }
+        zzz('z')        
+        function zzz(a){
+            document.write('새로 정의한 함수')
+        }
+
+        //overloadingX--overwrite
+        function zzz(a,b){
+            document.write('오버로딩안됨')
+        }
+
+
+
+
+
+        // 리턴 , 기타내용
+        document.write('<hr>')
+        document.write('<h4>Return & etc</h4>')
+
+        function ggg(){
+            // return 'return타입 자료형 필요없음'
+            return new Date()+(true+3+5)
+        }
+        eee(ggg())
+
+        function h(){
+            return {name:'sam', age:20}
+        }
+
+        var fx_h = h//함수를 넣음
+        eee(fx_h)
+        var h= h()//함수를 호출한 결과를 넣음
+        eee(h.name)
+        eee(h.age)
+
+
+
+
+
+
+
+
+        // 지역변수 & 전역변수
+        document.write('<hr>')
+        document.write('<h4>Local & Gloval Variable</h4>')
+
+        var a=30
+        function mmm(){
+            //var a=20;//지역변수
+            a=10//전역변수- [ 'var' 키워드 없이 변수선언 ]
+            document.write('mmm의 a : '+a+'<br>')
+        }
+
+        mmm()
+        eee(a)
+
+        //JS에서의 {}은 지역구분이아닌 함수영역
+        if(true){
+            var x=50
+        }
+        eee(x)
+
+
+
+
+
+
+
+
+
+
+        //익명함수 : 익명객체Anonymous와 같은 역할-이벤트처리용으로 많이 사용
+        //└이름이 없는 함수 : 변수에 대입하거나 파라미터로 전달하여 사용
+        var show=function(){
+            eee('익명')
+            return 'show'
+        }
+
+        show()
+        //변수에 대입되어 있기에 파라미터 전달도 가능
+        function iii(a){
+            //a에 함수를 전달받으면 a가 함수명이되어 호출됨
+            eee(a())
+        }
+        eee('iii↓')
+        iii(show)//익명함수를 가진 변수의 값전달
+
+        //리턴값으로 익명함수 전달가능
+        function returnA(){
+            var ppp=function(){
+                eee('ppp')
+                return '고차함수'
+            }
+            return ppp
+        }
+        var ttt=returnA()
+        eee('ttt↓')
+        ttt()//리턴된 익명함수 호출
+
+        eee('returnA()↓')
+        returnA()()//고차함수
+
+        eee(returnA())
+        eee(returnA()())
+
+    </script>
+</head>
+
+
+
+<body>
+    <hr>
+    <h2>BODY Region-----------------------------┐</h2>    
+    <!-- body안에서 head에 있는 함수 호출 가능 -->
+    <script>
+        aaa();//호출 가능
+        function ddd(){
+            document.write('ddd')
+        }
+    </script>
+    <h2> &Aacute; --------------------------------------------┘</h2>    
+</body>
+</html>

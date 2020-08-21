@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="uft-8">
+        <title>Style Test</title>
+        <!-- 스타일을 적용하는 세가지 방법 -->
+        <!-- 1. 내부 스타일 시트 -->
+        <!-- 2. 외부 스타일 시트 -->
+        <!-- 3. inline style sit -->
+
+        <!-- 내부, 외부 스타일 시트는 적용하는 순서에 따라 가장 마지막에 작성한 스타일 반영 -->
+        <!-- 1. 내부(html문서 안) -->
+        <style>
+            p{color: tomato;}
+        </style>
+
+        <!-- 2. 외부 스타일 시트(별도의 .css문서를 만들고 적용) -->
+        <link rel="stylesheet" href="./02.css">
+    </head>
+
+    <body>
+        <!-- 3. inline(최우선순위) 요소의 속성으로 style을 사용하여 css작성 -->
+        <p style="color: darkturquoise;">Hello world</p>
+        <p>Wow </p>
+
+        <style>
+            p{color: black;}
+        </style>
+    </body>
+</html>

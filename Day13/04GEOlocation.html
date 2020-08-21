@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Location</title>
+
+    <script>
+        function clickBtn(){
+            navigator.geolocation.getCurrentPosition(
+            function(position){//Success Func-성공했을 때 실행되는 함수
+                var lat=position.coords.latitude
+                var lng=position.coords.longitude
+
+                document.getElementById('hh').innerHTML=lat+", "+lng
+            },
+            function(error){//Fail Func-실패했을 때 실행되는 함수
+                var str
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        str="사용자 거부"
+                        break
+
+                    case error.POSITION_UNAVAILABLE:
+                        str="지리정보 없음"
+                        break
+                
+                    case error.TIMEOUT:
+                        str="로드시간초과"
+                        break
+                    case error.UNKNOWN_ERROR:
+                        str="알수없는 에러"
+                        break
+                }
+
+                document.getElementById('hh').innerHTML=str
+            })
+        }
+
+        var id;
+        function aaa(){
+            id=navigator.geolocation.watchPosition( function(position){
+                var lat=position.coords.latitude
+                var lng=position.coords.longitude
+                document.getElementById('hh').innerHTML=lat+", "+lng
+            })
+        }
+
+        function bbb(){
+            navigator.geolocation.clearWatch(id)
+        }
+    </script>
+</head>
+<body>
+    <button onclick="clickBtn()">My Location</button>
+    <h3 id="hh">Location</h3>
+
+    <button onclick="aaa()">위치 자동 업데이트 시작</button>
+    <button onclick="bbb()">위치 자동 업데이트 종료</button>
+</body>
+</html>

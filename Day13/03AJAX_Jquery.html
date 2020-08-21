@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JQuery Library AJAX Technology</title>
+
+
+        <!-- JQuery Library 적용[CDN] /////Download -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#b1').click(function(){
+                    var name=$('#in1').val()
+                    var email=$('#in2').val()
+
+                    $.ajax({//  $.  :  JQuery의 전역변수
+                        type: "GET",
+                        url: "./getTest.php?name="+name+"&email="+email,
+                        success:function(data){
+                            $('#hh').html(data)
+                        },
+                        error:function(error){
+                            $('#hh').html(error.responseText)
+                        }
+                    })
+                })
+
+
+
+
+                $('#a4').click(function(){
+                    var name=$('#in1').val()
+                    var email=$('#in2').val()
+
+                    var data="name="+name+"&email="+email//x-www-form-urlencoded기술
+
+                    $.ajax({
+                        type:"POST",
+                        url:"./postTest.php",
+                        data: data,//속성명과 값이 같은 경우 [ data, ]만 써도 OK
+                        success: function(data){
+                            $('#hh').html(data)
+                        }
+                        //error 안써도 됨--원하는 변수만 입력하면 됨.원래 headers도 있는데 안하는거ㅇㅇ
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" id="in1">
+        <input type="text" id="in2">
+        <button id="b1">GET</button>
+        <button id="a4">POST</button>
+        <h3 id="hh"></h3>
+        <!-- DB 데이터 불러와 보여주기 -->
+        <!-- JS + HTML 코딩 -->
+
+        <!-- fetch library : jquery  대신 네트워크용으로 쓰이는 js에 내장된 기본 라이브러리 -->
+        <!-- Hybrid App 수업시간에 소개 -->
+    </body>
+</html>

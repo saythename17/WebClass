@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //화살표 함수 - 함수의 또 다른 문법 [JAVA언어의 람다식과 유사] 
+
+        //1.선언적 함수
+        function show(){
+            document.write('show!!<br>')
+        }
+        show()
+
+        //2.익명함수
+        let output=function(){
+            document.write('output!!<br>')
+        }
+        output()
+
+        //3.화살표 함수 : 익명함수를 줄여쓴 문법
+        let display=()=>{//java : ->
+            document.write('=><br>')
+        }
+        display()
+
+
+        //화살표함수- 파라미터
+        let display2=(name)=>{
+            document.write('display2 : '+name+'<br>')
+        }
+        display2('wow')
+
+
+
+        //화살표함수의 축약형
+        //1)파라미터가 1개면 () 생략가능
+        let display3=name=>{
+            document.write('display3 : '+name+'<br>')
+        }
+        display3('wow')
+        
+        
+        //2)실행문이 1줄이면 {} 생략가능
+        let display4=name=>document.write('display4 : '+name+'<br>')
+        display4('wow')
+
+
+        //파라미터가 0개 or 2개이상이면 ()생략 불가
+        let display5=()=>document.write("display5!!! <br>")
+        display5()
+        let display6=(name,age)=>document.write(name+age+"display6!!!<br>")
+        display6(new Date(),'김수한무')
+    </script>
+    <hr>
+
+
+
+
+    <!-- 실무에서 이벤트처리 콜백함수로 많이 사용 -->
+    <button id="btn1">button</button>
+    <p id="p1"></p>
+    <textarea id="text" cols="30" rows="10"></textarea>
+
+    <script>
+        //1.button click event
+        //이전까지 썼던 방법
+        // let btn1=document.getElementById('btn1')
+        // btn1.onclick=function(){
+        //     document.getElementById('p1').innerHTML='clicked'
+        // }
+
+        //화살표함수
+        btn1.onclick=()=>document.getElementById('p1').innerHTML='click!!!'
+
+        //반복문 처리 기존방법
+        let arr=[10,20,30]
+        // document.getElementById('p1').innerHTML=arr[0]+","
+        // document.getElementById('p1').innerHTML+=arr[1]+","
+        // document.getElementById('p1').innerHTML+=arr[2]+"<br>"
+
+        for(let i=0;i<arr.length;i++){
+            document.getElementById('p1').innerHTML+=arr[i]+"/"
+        }
+
+        //배열객체에 forEach() method
+        arr.forEach(function(value){
+            document.getElementById('p1').innerHTML+=value+","
+        })
+
+        //화살표 함수로 반복문 처리
+        // arr.forEach((value, index, array)=>{})
+        arr.forEach(value=>document.getElementById('p1').innerHTML+=value+"\\")
+
+
+
+        //배열의 요소들 각각에 접근하여 원하는 작업을 수행하고 그 결과를 다시 리턴하여
+        //새로운 배열로 만드는 함수 -------*****map()******
+        let newArr=arr.map(function(value){return value+1})
+        //원래있던 배열과 똑같은 개수의 배열이 만들어짐(요소값 : 함수를 실행해 리턴받은 값)
+        document.write(newArr+'<br>')
+
+        let aaa=arr.map(value=>{return value*2})
+        aaa=arr.map(value=>value*2)//윗줄의 축약형. 실행문이 1줄이면 {}생략 가능 (단, [;]과[return]도 함께 생략
+        document.write(aaa+'<br>')
+    </script>
+    <hr>
+
+
+
+
+
+    <!-- 일반함수와 화살표함수의 차이점 -->
+    <button id="b2">button2</button>
+    <h3 id="h3"></h3>
+
+    <script>
+        var num=100
+        let b2=document.getElementById('b2')
+        //익명함수로 클릭이벤트 처리 : this
+        b2.onclick=function(){
+            document.getElementById('h3').innerHTML=this//this :  button (b2) 함수를 호출한 객체
+            document.getElementById('h3').innerHTML+=this.num//num 인식---window의 속성이기 때문
+        }
+
+        //화살표함수로 클릭이벤트 처리 : this
+        b2.onclick=()=>document.getElementById('h3').innerHTML=this.num//this : 함수를 감싸는 객체
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+
+
+    <script>
+        function print(a){
+            document.write(a+'<br>')
+        }
+
+
+
+        //리터럴객체, 생성자함수 ..만들어진 모든 객체는 모두 멤버메소드를 객체마다 보유하고 있음
+        //자바, c++에서는 같은 class의 메소드는 한곳에 저장(객체마다 메소드를 가지고 있지 않아 메모리 낭비)
+        function Person(name, age){
+            this.name=name
+            this.age=age
+        }
+
+        var p=new Person('sam',20)
+        var p2=new Person('robin',25)
+
+        Person.prototype.show=function(){
+            print(this.name+"/"+this.age+'<br>')
+            return this.name+"/"+this.age+'<br>'
+        }
+
+        p.show()
+        p2.show()
+        
+        //prototype method- 여러개 가능
+        Person.prototype.getName=function(){
+            return this.name
+        }
+
+        print(p.getName())
+
+        //prototype은 변수도 가능 [ 자바의 static멤버변수와 같은 역할 ]
+        Person.prototype.address='seoul'
+        print('p address : '+p.address)
+        print('p2 address : '+p2.address)
+
+        //값을 변경할 때 ※
+        //p.address='busan'
+        //안쓰면 새로운 인스턴스변수가 p에 추가된것
+        print('p address : '+p.address)
+        print('p2 address : '+p2.address)
+        //prototype의 변수를 바꾸고 싶을 때
+        Person.prototype.address='Incheon'//prototype변수의 값 대입은 명시적으로 prototype을 써야함
+        print('p address : '+p.address)
+        print('p2 address : '+p2.address)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

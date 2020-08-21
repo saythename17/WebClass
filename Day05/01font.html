@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Font Test</title>
+
+        <!-- 내부 스타일시트 적용 -->
+        <style>
+            p{font-family: "HY백송B","Orbit-B BT",serif; }
+            p{font-family: sans-serif;}
+            p{font-family: fantasy;}
+            p{font-family: cursive;}
+            p{font-family: monospace;}
+
+
+
+            /* 사용자정의 글꼴 : 웹폰트 */
+            @font-face {
+                font-family: "Cherry Font";
+                src: url("./chery.ttf");
+                /* CSS의 다른 파일 경로는 url() 사용 */
+            }
+            @font-face {
+                font-family: "Y";
+                src: url("./YWDA05.TTF");
+            }
+
+            /* 웹폰트 적용 */
+            p{font-family: "Cherry Font","휴먼옛체";}
+
+
+            /* 글씨 사이즈 */
+            p{font-size: 2em;}
+            /* em,pt,%...//1em : 원래사이즈 1.5em : 1.5배 사이즈 */
+
+            /* bold,normal */
+            p{font-weight: bold;}
+            /* 100~900 */
+            /* italic(필기체 느낌 기울기), oblique(글꼴 고려X, 그냥 기울이기) */
+            p{font-style: italic;}
+
+            /* 축약형(폰트 속성 한번에 지정) : 지정순서 [weight/style]->[size]->[family] */
+            p{font: bold normal 3em "Parchment","Y",monospace;}
+
+            /* 텍스트 정렬 */
+            p{text-align: center;}
+            /* justify : 양쪽 정렬 : 양쪽 간격을 균등하게 맞춤: 리포트 쓸때 */
+            #long{text-align: justify;}
+            p{text-transform: none;}
+            /* 단어의 앞글자만 대문자로 :capitalize */
+
+            /* text 줄긋기(deco) */
+            p{text-decoration: underline;}
+            p{text-decoration: line-through;}
+            p{text-decoration: none;}
+
+            /* text shadow */
+            p{text-shadow:  5px 3px 5px silver;}
+
+
+            /* word wrap */
+            p.aa{width: 5em; font-family: fantasy; 
+                border: 1px solid slategray;
+                word-wrap: break-word;}
+                /* word wrap 이 없으면 긴글씨는 영역을 벗어남 [한글은 자동 워드랩] */
+
+
+
+            /*다중 컬룸 */
+            p.lorem{columns: 3; column-gap: 60px; column-rule: 4px dashed black;}
+        </style>
+    </head>
+
+    <body>
+        
+        <p>Hello world</p>
+        <p>안녕 세상아</p>
+        <p id="long" class="lorem">
+            <!-- 로렘 입숨 (Lorem ipsum) 
+            로렘 입숨은 출판이나 그래픽 디자인 분야에서 폰트, 타이포그래피, 레이아웃 같은 
+            그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 채우기 텍스트로, 
+            최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트 모형의 채움 글로도 이용된다.-->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis perferendis consectetur modi sed explicabo placeat labore quos minima, magnam sapiente fugiat quaerat odit voluptatum voluptatem expedita suscipit inventore mollitia saepe!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis perferendis consectetur modi sed explicabo placeat labore quos minima, magnam sapiente fugiat quaerat odit voluptatum voluptatem expedita suscipit inventore mollitia saepe!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis perferendis consectetur modi sed explicabo placeat labore quos minima, magnam sapiente fugiat quaerat odit voluptatum voluptatem expedita suscipit inventore mollitia saepe!
+        </p>
+
+        <!-- word-wrap -->
+        <p class="aa">
+            한글은 전혀 문제 없이 자동으로 워드랩 됨
+            But, Englishisovertheline without space
+        </p>
+
+        <!-- 텍스트정렬 text-align은 block element에만 적용됨 -->
+        <div style="text-align: center; background-color: darkgray;">Hello</div>
+        <span style="text-align: center; background-color: darkgrey;">Nice</span>
+    </body>
+</html>

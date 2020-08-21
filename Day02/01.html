@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>01</title>
+        <style>
+            p{color: blueviolet;}
+        </style>
+    </head>
+
+    <body>
+        <p>Hello World</p>
+
+    </body>
+</html>
+html 밖에 있어도 문서에 있는 text는 그대로 나옴
+<html>
+    <head>
+        <title>02</title>
+        <!-- title 요소는 첫번째 요소를 적용 -->
+        <style>
+            p{color: cornflowerblue;}
+            /* html은 head영역 안의 코드를 body보다 먼저 읽음
+            style element : 순서대로 적용 -> 마지막으로 적용된 cornflowerblue가 글자색*/
+        </style>
+    </head>
+
+    <body>
+        <p>Nice to meet you</p>
+    </body>
+</html>
+<h1>html 밖에 있어도 태그의 기본 특성 적용</h1>
+

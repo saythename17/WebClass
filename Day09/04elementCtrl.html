@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Control</title>
+
+    <script>
+        function cal(){
+            var in1=document.getElementById('in1')
+            var in2=document.getElementById('in2')
+            var a=parseInt(in1.value)
+            var b=parseInt(in2.value)
+            var result=document.getElementById('result')
+            result.value= a+b
+        }
+
+        function changeColor(){
+            var h2=document.getElementById('h2')
+            h2.style.color='red'
+            h2.style.backgroundColor='yellow'
+            h2.style.border='2px solid blue'
+
+            var elements=document.getElementsByTagName('h2')//여러개일때
+        }
+
+        function changeImg(){
+            //요소의 name속성값으로 요소 찾기
+            var egg=document.getElementsByName('egg')
+            egg[0].src="./fried.png"
+            egg[0].scrollWidth='100px'
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="in1"> +  
+    <input type="text" id="in2"><br>
+    <button onclick="cal()">=</button>
+    <input type="text" id="result"><br>
+
+    <!-- HTML 요소의 특정 스타일 변경 -->
+    <h2 id="h2">This is Title</h2>
+    <button onclick="changeColor()">CHANGE TITLE</button>
+    <hr><br>
+
+    <!-- 이미지 변경 -->
+    <img src="./icons8-kawaii-egg-100.png" alt="egg" name="egg" width="100px">
+    <input type="button" value="Break!" onclick="changeImg()">
+    <hr><br>
+
+    <!-- 제어문 : 문법적으로 다른점: X
+        ※script문은 body안에 있어도 됨※ -> HTML요소 사이에 script 존재 가능-->
+    <h2>
+        <script>
+            var k='JS'
+            document.write('Hello '+k)
+        </script>
+    </h2>
+    <table border="1">
+        <tr>
+            <th>Num</th>
+            <th>Message</th>
+        </tr>
+
+        <script>
+            // 다량의 데이터를 HTML에서 출력할 때 scipt의 for문 사용
+            var arr=['hoshi','woozi','dino']
+            for(var i=0;i<10;i++){
+                document.write('<tr><td>'+i+'</td><td>'+'hello'+'</td></tr>')
+            }
+            document.write()
+        </script>
+    </table>
+
+
+</body>
+</html>

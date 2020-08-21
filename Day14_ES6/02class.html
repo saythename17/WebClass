@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //class  : 객체를 생성하는 새로운 방법 [java와 유사] /( ver ECMA5~ 등장 )
+        //1. 클래스 선언(객체를 만드는 것이 아닌 객체의 설계도를 짜는 것)
+        class Person{//멤버변수:property 멤버함수 :method
+            name="sam"
+            tel
+
+            //property를 만들때 많이 쓰는 방식: 생성자 함수
+            constructor(){
+                this.age//멤버변수에 추가
+                this.address='seoul'
+                this.city='Hwaii'
+
+                let gender='male'//property(속성)X---지역변수
+            }//constructor
+
+
+            //Method
+            //※function keyword--X
+            show(){
+                //document.write(name+'<br>'+address+'<br>'+city+'<br>'+age+'<br>'+tel)
+                //ERROR--클래스안에서 다른 멤버를 사용할 때는 반드시 [this] 키워드 사용
+                document.write(this.name+'<br>'+this.address+'<br>'+this.city+'<br>'+this.age+'<br>'+this.tel+'<br>')
+                this.aaa()
+            }
+
+            aaa(){
+                //다른 method 호출
+                //bbb()---ERROR
+                this.bbb()
+            }
+
+            bbb(){
+                document.write('bbb<br>')
+            }
+
+            //Anonymous로 class의 Method만들기
+            out=function(){
+                document.write('out<br>')
+            }
+
+            //다른 함수를 멤버변수로 대입가능
+            //JS에서는 함수도 객체로 보기 때문에 변수에 대입가능--> 함수 전달도 가능
+            sss=kkk
+
+
+        }//class Person..
+
+        function kkk(){
+            document.write('kkkk!!!<br>')
+        }
+        
+
+        let p=new Person()
+        p.age=17
+        p.show()
+    </script>
+
+    <!-- 다른 스크립트 영역 -->
+    <script>
+        //같은 .html문서 안에있으면 다른 script영역에서 생성한 클래스 인식 가능
+        let p2=new Person()
+        p2.show() 
+        p2.out()
+        p2.sss()
+
+
+
+
+
+
+
+
+
+
+        //객체 생성하면서 값 전달 - 생성자 함수에 파라미터 사용
+        class Member{
+            //생성자 오버로딩 : 문법적으로 불가 ----ERROR
+            //생성자 오버로딩이 없기에 대신 파라미터 디폴트 값 적용 [C++]
+            constructor(id="익명",pw=0){
+                this.id=id
+                this.pw=pw
+            }
+
+            show(){
+                document.write('ID : '+this.id+', PW : '+this.pw+'<br>')
+            }
+
+            //일반 메소드의 오버로딩XXX---덮어 쓰기 됨
+            output(){
+                document.write('no data!<br>')
+            }
+            output(a){//ERROR는 아니지만 오버로딩은 불가 기존 output()를 새로 정의한 것
+                document.write(' data : '+a)
+            }
+        }
+
+        var m=new Member('ailen',1234)
+        m.show()
+
+        var m2=new Member() //값을 안주면?
+        m2.show()//undefined, undefiend
+
+        //값을 안줬을때 default로 '익명',0000으로 적용
+        //생성자 오버로딩 : 문법적으로 불가 ----ERROR
+        m2.output()
+        m2.output(10)
+    </script>
+    <hr>
+
+
+
+
+
+    <!-- 상속 -->
+    <script>
+        class Human{
+            constructor(name,age){
+                this.name=name
+                this.age=age
+            }
+
+            show(){
+                document.write(this.name+", "+this.age)
+            }
+        }
+
+        let h=new Human('sam',10)
+        h.show()
+        document.write('<br>')
+
+        //Human을 상속하느 Student클래스 선언
+        class Student extends Human{
+            constructor(name,age,major){
+                //반드시 명시적으로 부모클래스의 생성자 호출문이 있어야만 함
+                super(name,age)
+                this.major=major
+            }           
+
+            //상속받은 메소드를 Override
+            show(){
+                super.show()
+                document.write(", "+this.major)
+            }
+        }
+
+        let s=new Student('robin',220,'Android')
+        s.show()
+    </script>
+    <hr>
+
+
+
+    <!-- static Method, Property -->
+    <script>
+        // static method
+        class First{
+            static show(){
+                document.write("first show~~~~~!!<br>")
+            }
+        }
+
+        //static 멤버는 객체 생성없이 클래스명으로 호출 가능
+        First.show()
+
+
+
+        //static Property
+        class Second{
+            constructor(){
+                //static this.name="aaa"--ERROR
+                //static var a---X
+                //static let a---X
+            }
+            static name='second'
+        }
+        document.write(Second.name+'<br>')
+
+        //class의 멤버는 동적으로 추가가능
+        //static도 나중에 동적으로 추가가능
+        Second.age=30
+        document.write(Second.age+'<br>')
+
+        //자바와는 다르게 static은 객체에서는 사용불가
+        let s3=new Second()
+        document.write(s3.name+'<br>')//새로운 인스턴스변수가 추가된 것
+    </script>
+    <hr>
+    
+
+
+
+
+
+
+    
+
+    <!-- 구조분해할당 -->
+    <script>
+        class Nice{
+            constructor(){
+                this.name='kim'
+                this.age=20
+                this.address='seoul'
+            }
+        }
+
+        const n=new Nice()
+        // n=new Nice()--ERROR
+        document.write(n.name+'<br>')
+        document.write(n.age+'<br>')
+        document.write(n.address+'<br>')
+
+        //객체의 멤버변수를 뽑아와서 일반 변수에 대입- 구조분해 할당
+        const {name,age}=n
+        document.write(name+'<br>'+age+"<br>")
+        document.write("<hr>")
+
+
+        //구조분해 할당은 함수의 파라미터로 객체를 전달할 때 많이 사용됨
+
+        //함수 선언
+        function showAddressNice({address}){
+            document.write(address+'<br>')
+        }
+
+        showAddressNice(n)
+
+        //※주의※ : 이름이 다르면 구조분해할당 불가
+        const{nam}=n
+        document.write("nam : "+nam +'<br>')
+        n.show()
+
+        let{show} =n;
+        show()
+    </script>
+
+</body>
+</html>

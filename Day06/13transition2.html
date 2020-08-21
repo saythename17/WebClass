@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Transition</title>
+        <meta charset="utf-8">
+
+        <style>
+            div.aa img{
+                background-color: cyan;
+                width: 200px;
+                height: 200px;
+
+                transition: width 3s, height 3s, background-color 3s, transform 3s;
+            }
+
+            div.aa  img:hover{
+                width: 400px;
+                height: 400px;
+                background-color: darkblue;
+                transform: rotate(360deg);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="aa">
+            <img src="./lion.png" alt="lion">
+            <img src="./pome.png" alt="pome">
+        </div>
+    </body>
+</html>

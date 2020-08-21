@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table Style</title>
+        <meta charset="utf-8">
+        <style>
+            table{
+                border: 2px solid hotpink;
+                border-collapse: collapse;
+                text-align: center;
+            }
+
+            td,th{
+                border: 1px solid hotpink;
+                padding: 5px 10px;
+            }
+
+            th{background-color: rgb(255, 182, 219); color: ivory;}
+
+            tr:nth-child(2n){background-color: rgb(248, 231, 255);}/*2n : 짝수번째 table row해당 / 2n+1 : 홀수 " */
+            td:first-child{width: 40%;}
+
+            th{border-bottom:  double hotpink}
+
+            /* even thought we can't see, table's first child :  tbody  ekementy */
+            table>:nth-child(1){border:10px dotted darkslateblue;}
+            
+            /*table's child : tr--적용 X*/
+            table > tr{color: grey;}
+
+            /*table의 자손 tr*/
+            table tr{color: darkgray;}
+        </style>
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>이메일</th>
+            </tr>
+
+            <tr>
+                <td>김철수철수</td>
+                <td>steelwater@google.com</td>
+            </tr>
+
+            <tr>
+                <td>영탁</td>
+                <td>니가 왜..! 니가 왜..!!!!</td>
+            </tr>
+            
+            <tr>
+                <td>수지</td>
+                <td>suzzzy@google.com</td>
+            </tr>
+
+            <tr>
+                <td>아이유</td>
+                <td>U&I @ I-LAND.com</td>
+            </tr>
+        </table>
+    </body>
+</html>

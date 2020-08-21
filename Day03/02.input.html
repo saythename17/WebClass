@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Input Test</title>
+    </head>
+
+    <body>
+        <!-- input : 한줄입력 -->
+        <input type="text" size="40" name="서버에 전송될 식별글자">
+        <!-- html에서는 글자수 제한을 할 수 없음 -->
+        <input type="password">
+
+        <hr>
+
+        <!-- input : radio button  -- name의 값을 같게 지정해주면 한 그룹으로 봄
+        radio button의 필수 속성 type,name,value-->
+        라디오 버튼 : 
+        <input type="radio" name="r" value="first">라디오1 
+        <input type="radio" name="r" value="second">라디오2
+
+        <hr>
+
+        <!-- <label>을 사용하여 text를 click해도 radio button이 선택되도록 -->
+        <input type="radio" name="r2" value="aaa" id="king" checked                        >
+        <label for="king">I'm the one and only best female</label>
+        <input type="radio" name="r2" value="aaa" id="queen">
+        <label for="queen">King of the junggle</label>
+
+        <hr>
+        <!-- checkbox button -->
+        <label><input type="checkbox" name="fruit" value="mango">Mango</label>
+        <label><input type="checkbox" name="fruit" value="peach">Peach</label>
+        <label><input type="checkbox" name="fruit" value="melon">Melon</label>
+        <!-- <label> element 안에 input element->자동 for 속성처럼 사용 -->
+        <!-- php에 선택된 checkbox들의 value가 배열로 전달됨 (key : fruit) -->
+
+        <br><br>
+
+        <!-- submit, reset : form요소 안에서 의미를 가짐 / name값 필요X -->
+        <input type="submit" value="send"> <input type="reset" value="change">
+
+        <hr>
+
+        <!-- button -->
+        <!-- 1. type="button" -->
+        <input type="button" value="button" onclick="alert('!button click!')">
+        <!-- 2. <button> element -->
+        <button onclick="alert('CLICK')">button element</button>
+        <!-- <form>안에서는 <button> element를 쓰면 오류가 발생함 ∴ input type="button" 권장 -->
+
+        <br><br>
+        <!-- Image Button -->
+        <button><img src="./button.png" alt="btn"></button>
+        <!-- form element안에서 사용시 submit과 같은 역할(submit 대체) -->
+        <input type="image" src="./icons8-bread-48.png">
+        <a href="./01.html"><img src="./emsicon2.png" alt="" width=50px></a>
+
+        <hr>
+
+        <!-- 여러줄 입력 -->
+        <textarea name="text" id="id는 안써도 상관 X" cols="30" rows="10">input text...</textarea>
+
+        <hr>
+        <!-- combo box : <select> -->
+        <select name="sel">
+            <option value="서버에 전송되는 text">화면에 보이는 text</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <!-- option group -->
+        <select name="food">
+            <optgroup label="China Food">
+                <option value="짜장면">짜장면</option>
+                <option value="짬뽕">짬뽕</option>
+                <option value="볶음밥">볶음밥</option>
+            </optgroup>
+            <optgroup label="Japanese Food">
+                <option value="초밥">초밥</option>
+                <option value="냉모밀">냉모밀</option>
+                <option value="규동">규동</option>
+            </optgroup>
+        </select>
+
+        <br><br>
+        <!-- fieldset : 영역을 그룹화 (테두리선 + label 적용) -->
+        <fieldset>
+            <legend>Profile</legend>
+            <label>Name : <input type="text"></label><br>
+            <label>Address : <input type="text"></label>
+        </fieldset>
+    </body>
+</html>

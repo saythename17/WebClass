@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECMA script</title>
+</head>
+<body>
+    <script>
+
+        //ECMAScript2015 (ES6)
+        //1.변수,상수 선언 키워드 추가 : let, const(상수)
+
+        //*기존 var변수
+        var a=10
+        document.write(a+'<br>')
+
+        //같은 이름의 변수를 또 선언하면?-상관X , 변수값을 변경해서 대입
+        var a=20
+        document.write(a+'<br>')
+
+        //**let 변수
+        let b=100
+        document.write(b+'<br>')
+
+        //같은 이름의 변수를 또 선언하면?- FATAL ERROR(문서실행X)
+        // let b=200
+        // document.write(b+'<br>')
+
+        //let은 같은 이름의 변수사용을 방지
+        b=200//변수값 변경
+        document.write(b+'<br>')
+
+        //**const상수만들기
+        const c=1000
+        document.write(c+'<br>')
+
+        //상수값 변경
+        //const c=2000(FATAL ERROR, 문서실행X)
+        //c=2000//ERROR(문서실행O, 이줄 밑으로 실행X) 
+        //document.write(c+'<br>')
+
+        //let , const 자료형 자유롭게 저장가능 & 자료형 변경 가능
+        let d="aaa"
+        document.write(d+'<br>')
+
+        d=30
+        document.write(d+'<br>')
+
+        d=true
+        document.write(d+'<br>')
+
+        const e="sma"
+        document.write(e+'<br>')
+
+        const f=new Date()
+        document.write(f+'<br>')
+
+        document.write('<hr>')
+
+        //let  <->  var   /지역인식범위(스코프) 차이 
+        //-var은 함수 단위를 지역으로 인식
+        //-let은 {}를 지역으로 인식
+
+        if(true){
+            var g=10
+            document.write(g+'<br>')//지역변수X
+        }
+
+        document.write(g+'<br>')//제어문{}밖에써도 인식... 함수만 지역으로 인식
+
+        let h=10
+        if(true){
+            let h=20
+            document.write(h+'<br>')//20지역변수
+        }
+
+        document.write(h+'<br>')//10
+        //ERROR ---let변수는 {}밖을 인식하지 못함
+
+        function aaa(){
+            var k="I\'m K"//지역변수
+            document.write(k+'<br>')
+        }
+
+        aaa()
+        //document.write(k+'<br>')---ERROR 함수밖k인식X
+
+        for(var i=0;i<3;i++){
+            document.write('in for{} :'+i+'<br>')
+        }
+
+        document.write(i+'<br>')//i인식 / let이면 인식X
+
+        
+
+
+        
+    </script>
+</body>
+</html>

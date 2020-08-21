@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animation</title>
+        <meta charset="utf-8">
+        <style>
+            div#aa{
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;/*circle*/
+                background-color: darkcyan;
+
+                /* 위치지정 속성 ※position≠static일때 사용 가능 */
+                position: relative;/*원래 놓여질 위치를 기준*/
+                position: absolute;/*문서의 아래쪽 위치를 기준*/
+
+                /* 애니메이션 적용 */
+                animation-name: bounce;
+                animation-duration: 3s;
+                animation-iteration-count: 5;/*5번 반복*/
+                animation-timing-function: ease;
+                /* animation-timing-function: cubic-bezier(); */
+            }
+
+            /* 애니메이션 설계 */
+            @keyframes anim {
+                0%{left: 0px; top: 0px;}
+                50%{left: 200px; top: 200px;}
+                100%{left: 0px; top: 0px;}                
+            }
+
+            @keyframes bounce {
+                from, to{/*==0%,100%*/
+                    bottom: 0px;
+                    animation-timing-function: ease-out;
+                }
+
+                50%{
+                    bottom: 100%;
+                    animation-timing-function: ease-in;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="aa"></div>
+    </body>
+</html>

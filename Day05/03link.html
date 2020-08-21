@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Psuedo Selector Ex-Link Style</title>
+        <style>
+            a#anchor:link{color: skyblue;}
+            a#anchor:visited{color: slateblue;}
+            a#anchor:hover{color: turquoise; font-size: 2em;}
+            a#anchor:active{color: rgb(137, 208, 255);}
+
+
+            /* 모든 요소에  : hover가능 */
+            p:hover{background-color: rgb(246, 209, 255);}
+            img:hover{width: 150px;}
+            img:active{border: rgb(78, 188, 216) 3px solid; border-radius: 17px; padding: 8px;}
+        </style>
+    </head>
+    
+
+    <body>
+        <a href="http://www.naver.com2" id="anchor">aaaaaaaaaaaaaa</a>
+        <p>Hello world</p>
+        <img src="./icons8-diamond-heart-96 (1).png">
+    </body>
+</html>

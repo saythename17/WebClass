@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Transform</title>
+        <meta charset="utf-8">
+        <style>
+            div{
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                border: 1px solid black;
+                background-color: yellow;
+            }
+
+            #b2{
+                background-color: yellowgreen;
+                transform: translate(100px,0px);/*x축으로 100px*/
+            }
+
+            #b3{
+                background-color: royalblue;
+                transform: scale(1.2,1.2);/*1.2배 크게*/
+            }
+
+            #b4{
+                background-color: skyblue;
+                transform: rotate(30deg);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>box1</div>
+        <div id="b2">box2</div>
+        <div id="b3">box3</div>
+        <div id="b4">box4</div>
+        <div id="b5">box5</div>
+    </body>
+</html>

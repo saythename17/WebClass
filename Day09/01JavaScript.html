@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javacript</title>
+        <meta charset="utf-8">
+
+        <!-- Javascript의 정식 표준안 명칭 - ECMAsciprt -->
+        <!-- 웹 브라우저가 interpreter를 하여 실행하는 프로그래밍코드 -->
+        <script>
+            //  이 영역안에서는 Javascript 의 문법체계를 따름
+
+            //HTML 에서 body 안에 했던 모든 작업을 스크립트로 처리 가능
+            //1.화면에 Text출력
+            document.write("Hello World!!!");//==System.out.prinln();
+            //줄바꿈하려면
+            document.write('<br>');
+            document.write('<hr> Nice World <br>');
+            //HTML의 문법을 직접 스크립트로 작성
+            document.write('<a href="">Tag문(HTML 문법) 사용</a> <br>')
+
+
+            //자바스크립트 : 프로그래밍 언어-->변수선언 & 연산가능
+            var a=10;
+            document.write(a);
+            var b="sam";
+            document.write(b+'<br>');
+            b=new Date();//변수에 객체 참조 가능
+            document.write(b);
+            for(var i=0; i<10; i++){
+                document.write(i+'<br>');
+            }
+
+
+            //함수 생성-이벤트에 따른 동척처리
+            function aaa(){
+                alert("CLICK!!");//make dialog
+
+                //body 영역이 모두 생성된 후에 다시 document.write() 메소드를 사용하면 화면이 갱신됨
+                // document.write('clicked button!');
+
+                //html의 id=p1인 요소를 찾아와서 요소안에 text작성
+                var p1=document.getElementById('p1');
+                p1.innerHTML="CLICKED BUTTON!"
+            }
+
+        </script>
+
+        <!-- 외부스크립트 -->
+        <script src="./01.js"></script>
+
+        <script>
+            //※
+            //문자열 끝에 ;없어도 됨
+            document.write(';;;;;;;;;;;;;;;;;;;;;')
+            var
+            x
+            =1
+            0
+            var c=8;
+
+            document.write(x);
+
+            //에러가 발생하면 발생한 js문서(script)는 실행 안됨
+        </script>
+    </head>
+
+    <body>
+        <hr>
+        <!-- body 영역은 언제나 head영역의 작업 후에 실행됨 -->
+        Hello World! -from body
+
+        <!-- 자바스크립트는 웹의 이벤트처리에 사용 -->
+        <p>
+            <button onclick="aaa()">Make Event!</button>
+        </p>
+
+        <p id="p1"></p>
+        
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Navigation Menu Style</title>
+        <meta charset="utf-8">
+        <style>
+            ul{
+                list-style: none;/*축약형*/
+                border-top:  1px solid steelblue;
+                border-bottom: 1px solid steelblue;
+                padding: 10px 100px;/*상하 : 10 / 좌우 : 0*/
+                text-align: center;/*text-align : not even text but all the content's gravity will be set center*/
+            }
+
+            ul li{
+                display: inline;
+                text-transform: uppercase;
+                padding: 0px 100px;
+                letter-spacing: 10px;
+                font-family: Arial;
+            }
+
+            ul li a{
+                color: steelblue;
+                text-decoration: none;
+            }
+            ul li a:hover{text-decoration: underline;}
+
+            #header{
+                text-align: center;
+                background-image: url(./sample_bg_main.jpg);
+                background-size: cover;
+                height: 400px;
+                color: white;
+                padding: 17em 0em 0em 0em;
+                letter-spacing: 10px;
+                text-shadow:5px 5px 5px slategray;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- header image -->
+        <div id="header">
+            <h1>HOME PAGE</h1>
+            <P>This is my homepage.</P>
+        </div>
+
+        <ul>
+            <li><a href="#aa">Home</a></li><!-- link -#aa : Go to the current page ID==aa-->
+            <li><a href="#">Blog</a></li><!--href를 비워두지 않고 현재 페이지에 있음을 나타내 주는 것을 권장-->
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script> 
+        function print(a){document.write(a+'<br>')}
+        //Number (≒java - Wrapper class (Integer ...)) 
+
+        //수치형≠Number 
+        var a = 10
+        var b = new Number(10)
+        print(typeof(a))
+        print(typeof(b))
+        print(a===b)//false
+
+        //Number type 주요 methods
+        var num=new Number(123.456)
+
+        //1) 지수 표현식
+        print(num.toExponential())//1.23456e+2
+        print(num.toExponential(2))//1.23e+2
+
+        //2) 소수점 아래를 제외하기 (정수로 만들기)
+        print(num.toFixed())//123
+        print(num.toFixed(2))//123.46(반올림됨)
+
+        //3) 진법(*진수 표기) 변환
+        var num=new Number(10)
+        print(num.toString())
+        print(num.toString(16))//16진수
+        print(num.toString(8))//8진수
+        print(num.toString(2))//2진수
+
+        //수치형은 Number 객체로 자동 wrapping됨
+        var a=255;
+        print(a.toString(16))
+
+        //literal value 수치형은 무조건 wapping 되지 않음
+        // print(10.toString(2))--- ERROR 변수에 넣지 않으면 int형은 자동 wapping 되지 않음
+        print(3.14.toFixed(2))//float(소수점이 있는 숫자)는 자동 wrapping
+        print(10.0.toFixed())
+
+        </script>
+    </head>
+</html>

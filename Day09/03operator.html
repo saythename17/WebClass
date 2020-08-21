@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Operator</title>
+        <meta charset="utf-8">
+
+        <!-- <JS> -->
+        <script>
+            //연산자 특이점
+            var a=1;
+            var b='1';
+            var c=1.0;
+            //JS에서  비교연산자[==]은 자료형 구분없이 값이 같은지 비교
+            document.write(a==b);//true
+            document.write('<br>');
+            document.write(a==c);//true
+            document.write('<br>');
+
+            //자료형까지 비교해주는 연산자 : [===]
+            document.write(a===b)//false
+            document.write('<br>')
+            document.write(a===c)//true : number type
+            document.write('<br>')
+
+            document.write('<hr>')
+
+            //0 ÷
+            document.write(10/0)//ERROR가 나오지 않음 : ∞
+            document.write('<br>')
+            
+            //비트 연산자 >>>
+            var f=10//양수일때는 차이X
+            document.write(f>>2)
+            document.write('<br>')
+            document.write(f>>>2)
+            document.write('<br>')
+            var f=-10
+            document.write(f>>2)//>> : 부호비트를 제외하고 shift
+            document.write('<br>')
+            document.write(f>>>2)//>>> : 부호비트를 포함하여 shift
+            document.write('<br>')
+
+            //숫자표현 최대값 : 2^1024 - 1
+            document.write(123456789123456789123456789+'<br>')
+            document.write(Number.MAX_VALUE+'<br>')//아주큰숫자 표현가능
+            document.write(100000000000000000000000000000000000000000000000000000000000000000000000000000000000000+'<br>')
+            icandothisallday=1
+            document.write('<hr>')
+
+            //[ in, delete ] 연산자 : 배열과 객체
+
+            //수치형 -> 문자열 자료형으로 변환
+            var h=1
+            document.write(typeof(h)+'<br>')
+            h=String(h) //h type : number->string
+            //└거의 쓰지 않음... ->  [ h=h+"" ]
+            document.write(typeof(h)+'<br>')
+
+            //string -> number
+            h=parseInt('4')
+            document.write(typeof(h)+'<br>')
+
+            //sting parsing
+            h=parseInt('a')
+            document.write(h+'<br >')//NaN : Not a Number
+            //실수(소수점숫자) 변환
+            h=parseFloat('3.14')
+            document.write(h+typeof(h)+'<hr>')
+
+            //수치형 <-> 문자형
+            //user의 입력값은 무조건 string으로 읽어지기 때문에 변환해서 코딩하는 것이 필수
+            var age=prompt('Input Your Age : ','0') //확인 -> 입력값 | 취소 -> null
+            document.write(age+'<br>')
+            document.write(age+3+'<br>')//문자열로 결합됨
+            age=parseInt(age)
+            document.write(age+3+'<br>')
+
+            //다이얼로그로 사용자 입력받지 않고
+            //<input>요소로 입력받고 JS에서 제어
+
+        </script>
+    </head>
+</html>

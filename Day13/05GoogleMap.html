@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google Map</title>
+        <meta charset="utf-8">
+
+        <!-- 구글 지도 API 라이브러리 추가 -->
+        <!-- developers.google.com->Google Map Platform->Web-> Java Script API -->
+        <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWPrQUc8LKl6bt_SxuGd6RBzzFA_hF6MY&callback=initMap" async>
+            // 사용자 인증 정보 -> Google Cloud Platform-API서비스- 사용자 인증 정보- 사용자 인증정보 만들기
+            //->key 복사 ->?~~~~~~&에 넣기
+        
+        </script>
+      
+
+        <style>
+            #map{
+                height: 100%;/* 높이는 부모요소의 사이즈가 정해져 있지 않으면 %적용 안되고 에러 */
+                width: 100%;
+            }
+            html,body{
+                height: 100%;
+            }
+        </style>
+
+        <script>
+            function showMap(){
+                var e=document.getElementById('map')//지도가 보여질 요소 찾기
+
+                //지도가 보여질 좌표지정
+                var position={
+                    lat:37.562161,
+                    lng: 127.035199
+                }
+
+                //지도객체 생성 및 보여질 요소 지정
+                map=new google.maps.Map(e,{center:position,zoom:14})//1 :대한민국 ~ 25 : 최대확대
+            }
+
+
+
+            function addMarker(){
+                //지도가 보여질 요소 
+                var e=document.getElementById('map')
+                //원하는 좌표
+                var position=new google.maps.LatLng(37.562161,127.035199)
+                
+                //표시되는 옵션(좌표, 배율) 
+                var options={
+                    center: position,
+                    zoom:17
+                }
+
+                //지도 보이기
+                map=new google.maps.Map(e,options)
+
+                // 지도에 추가될 마커객체
+                var marker=new google.maps.Marker({
+                    position,//== position:position
+                    title:"미래능력개발교육원"
+                })
+
+                //add Marker
+                marker.setMap(map)
+
+                //마커 클릭 이벤트
+                marker.addListener('click',function(){
+                    open('http://www.mrhi.or.kr','_blank')
+                })
+
+
+
+
+
+
+
+                //두번째 마커
+                var station=new google.maps.LatLng(37.561196,127.038498)//왕십리역
+
+                //마커 이미지
+                var img='https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+
+                var marker2=new google.maps.Marker({
+                    position: station,
+                    title: "왕십리역",
+                    icon:img,
+                    map:map //마커 생성과 동시에 맵에 추가
+                })
+
+
+                //마커 클릭 이벤트 : 애니메이션 효과
+                marker2.addListener('click',function(){
+                    //마커 바운스
+                    //marker2.setAnimation(google.maps.Animation.BOUNCE)//무한반복
+
+                    //누를때마다 TOGGLE
+                    if(marker2.getAnimation()==null){
+                        marker2.setAnimation(google.maps.Animation.BOUNCE)
+                    }else{
+                        marker2.setAnimation(null)
+                    }
+                })
+
+
+                //마커가 보여질때 에니메이션으로 등장하도록
+                var pharmacys=[
+                    ["희망약국",37.562516,127.035679],
+                    ["이수프라자약국",37.561155,127.034560],
+                    ["연세우리약국",37.560710,127.035978],
+                    ["왕십리약국",37.562162,127.032171]
+                ]
+
+                var img='../Day12/space.png'
+
+                for(var i=0; i<pharmacys.length; i++){
+                    var title=pharmacys[i][0]
+                    var position=new google.maps.LatLng(pharmacys[i][1],pharmacys[i][2])
+
+                    var markers=new google.maps.Marker({
+                        position,
+                        title,
+                        icon : img,
+                        animation: google.maps.Animation.DROP,
+                        map:map
+                    })
+                    markers.addListener('click',function(){
+                        alert(this.getTitle())
+                    })
+                }
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <button onclick="showMap()">SHOW MAP</button>
+        <button onclick="addMarker()">ADD MARKER</button>
+
+        <!-- 구글 지도 API사용 - API : 키 발급 후 사용 가능 -->
+        <!-- 구글 개발자 센터(developers.google.com)에 관련문서 튜토리얼 참고 -->
+
+        <!-- 지도가 보여질 요소 -->
+        <!-- 구글지도는 반드시 그 영역의 height값을 명시적 지정해야함 -->
+        <div id="map"></div>
+    </body>
+</html>

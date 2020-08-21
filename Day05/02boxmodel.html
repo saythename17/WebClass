@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Box model</title>
+
+        <style>
+            p.border{
+                text-align: center;
+
+
+
+                /* 경계선 스타일 [width 지정이 없을시, 자동 3px]*/
+                border-style: dotted;
+
+                /* top,right,bottom,left로 나누어 border지정 */
+                border-top-style: double;
+
+                /* 경계선 두께 : px, thin, medium, thick*/
+                border-width: 3px;/*defult width : 3px*/
+                border-bottom-width: 8px;
+
+                /* color */
+                border-color: darkgray;
+                border-right-color: dimgrey;
+
+
+                /* 모서리 둥글게 */
+                border-radius: 20px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+
+                /* 경계선 이미지 */
+                /* └경계선의 두께를 이미지가 보일만큼 설정 */
+                border: 30px solid transparent;
+                border-image-source: url(./border.png);/*-source 없이 축약형으로 써도됨*/
+                border-image-slice: 27 27;/*높이 너비*/
+                border-image-repeat: round;/*이미지 반복*/
+
+
+                /* 요소 크기 */
+                width: 70%;/*글자수 : em, %가능*/
+                height: 300px;/*px, %은 X : (부모(body-height) 사이즈 인지X :  web은 height 제한이 없기 때문-화면이 넘어가면 자동 스크롤)*/
+
+
+                /* margin (요소간 간격) */
+                margin-left: 300px;
+                /* 마진을 이용하여 (block)요소 중앙 정렬 - inline은 불가*/
+                margin-left: auto; margin-right: auto;/*constraintlayout과 같은 방법*/
+            }
+
+
+
+
+            /* inline element can't set their size */
+            a{background-color: tomato; color: white; width: 50%;}
+            em{background-color: rgb(248, 202, 74); width: 50%;}
+            /* inline block : 인라인 요소중 크기지정 가능한 요소 - input */
+            input{width: 100%; background-color: skyblue;}
+            img{width: 300px;}
+
+
+
+            /* display : inline <-> block 다른 요소의 특징으로 바꿀 수 있는 속성  */
+            #p1{background-color:  tomato; height: 50px; margin: 0px; margin-bottom: 0px;}
+            #p2{background-color:  teal; height: 50px; margin: 0px; margin-top: 20px;}
+
+            /* marign 에 음수를 넣으면 요소가 겹침 */
+            #p1{margin: 0px;}
+            #p2{margin: 0px; margin-top: -30px; width: 50%;}
+
+
+
+
+
+
+            /* background - color/image */
+            p#background{
+                background-color: rgb(116, 191, 216);
+                background-image: url("./image.png");
+                background-size: 200px 200px;/*가로 세로*/
+                background-repeat: repeat;/*default*/
+                background-repeat: repeat-x;
+                background-repeat: no-repeat;
+                background-position: right bottom;
+                padding: 50px; padding-top: 100px;
+
+                /*축약형*/
+                background: cornflowerblue url('./image.png') no-repeat right bottom;
+                border: cornflowerblue 50px solid;
+                border-bottom: 0px;
+            }
+
+
+
+            /* 배경이미지가 화면에 붙는 방식지정 */
+            p#att{
+                width: 30%;
+                height: 300px;
+                border: 2px solid silver;
+                overflow: scroll;/* overflow : content size> box(element) size*/
+                margin-left: auto; margin-right: auto;
+
+                background-image: url('./feed_image3.png');
+                background-size: 200px 200px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: scroll;/*default : content가 scroll되어도 p요소의 배경은 항상 배경의 포지션을 유지함*/
+                background-attachment: fixed;/*브라우저의 전체영역을 기준으로 배치(p요소의 배경이므로 p요소의 밖에서는 보이지 않음)*/
+                background-attachment: local;/*element의 content와 같이 스크롤 됨(콘텐츠가 요소보다 클때)*/
+            }
+
+        
+        
+        </style>
+    </head>
+
+    <body>
+
+        <!-- border line/element size/ 중앙정렬 -->
+        <p class="border">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum recusandae nobis dolores asperiores et, facilis iure nihil optio officiis totam necessitatibus eaque velit quos eius distinctio maiores! Magni, ducimus ratione.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum recusandae nobis dolores asperiores et, facilis iure nihil optio officiis totam necessitatibus eaque velit quos eius distinctio maiores! Magni, ducimus ratione.
+        </p>
+
+        <!-- inline 요소는 기본적으로 width, height 설정 불가 -->
+        <a href="http://www.google.com">Google</a>
+        <em>Nice to meet you</em>
+
+        <!-- inline block : inline 요소중 width, height이 지정되는 요소 -->
+        <input type="text">
+        <img src="./back.jpg">
+
+        <!-- margin -->
+        <div class="m">
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+        </div>
+
+
+        <!-- 배경 -->
+        <p id="background">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, rerum nulla exercitationem unde accusamus recusandae, neque pariatur sequi vero, distinctio labore consectetur eos deserunt? Officiis quis placeat commodi cupiditate dicta!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, rerum nulla exercitationem unde accusamus recusandae, neque pariatur sequi vero, distinctio labore consectetur eos deserunt? Officiis quis placeat commodi cupiditate dicta!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, rerum nulla exercitationem unde accusamus recusandae, neque pariatur sequi vero, distinctio labore consectetur eos deserunt? Officiis quis placeat commodi cupiditate dicta!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, rerum nulla exercitationem unde accusamus recusandae, neque pariatur sequi vero, distinctio labore consectetur eos deserunt? Officiis quis placeat commodi cupiditate dicta!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, rerum nulla exercitationem unde accusamus recusandae, neque pariatur sequi vero, distinctio labore consectetur eos deserunt? Officiis quis placeat commodi cupiditate dicta!
+        </p>
+
+
+        <!-- background attechment -->
+        <p id="att">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse atque impedit recusandae doloribus voluptatem, quis aliquid maiores ipsam pariatur facere soluta et necessitatibus. Repellendus sit distinctio vitae similique aspernatur.
+        </p>
+    </body>
+</html>

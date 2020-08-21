@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multi Media Example</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- audio -->
+        <audio src="./alarm.mp3" controls autoplay>
+            <!-- controls="controls"┘       └autoplay="autoplay" : chrome에서는 지원하지 않음-->
+            <!-- 속성의 이름과 속성의 값이 값은 철자면 값 생략 가능 -->
+            브라우저가 audio태그를 지원하지 않으면 보임</audio>
+        <audio src="./old_pop.ogg" controls>ogg file도 지원</audio>
+
+        <hr>
+
+        <!-- 브라우저에 따라 달라지는 음원의 유형 처리에 대응하기 위해 <source>태그 사용 권장 -->
+        <audio controls autoplay>
+            <source src="./alarm.mp3" type="audio/mp3">
+            <source src="./old_pop.ogg" type="audio/ogg">
+            <!-- └상위의 음원이 브라우저에서 지원받지 않으면 나오는 음원 -->
+            브라우저에서 audio를 지원하지 않음.
+        </audio>
+
+        <hr>
+
+        <!-- vedio -->
+        <video src="./movie.ogv" autoplay controls>video가 지원되지 않음</video>
+        <!-- 브라우저 호환성을 위해 source태그 사용 -->
+        <video controls width="560" poster="./lp.jpg">
+            <source src="./trailer.mp4" type="video/mp4">
+            <source src="./trailer.ogv" type="video/ogg">
+            <!-- ogv의 타입은 ogg -->
+            <source src="./trailer.webm" type="video/webm">
+            <!-- 위의 비디오가 실행안되면 밑에 것으로 시도 -->
+        </video>
+        
+
+        <br><br><br><hr>
+
+        <!-- iframe [inline frame] : 다른 html문서를 삽입 -->
+        <iframe src="../Day01/index.html" width="500" height="300"></iframe>
+
+        <!-- 다른 웹사이트의 문서도 절대적 주소로 삽입가능 -->
+        <iframe src="http://soon0.dothome.co.kr/index.html" height="300" width="400"></iframe>
+        <iframe src="http://mrhi.or.kr" height="300"></iframe>
+        <!-- ※ https주소는 보안이 강화되어 열리지 않음 -->
+
+        <hr><br><br><br>
+
+        <!-- 링크<a>에 의해 iframe에 열리는 문서를 지정 -->
+        <a href="http://www.w3c.org" target="aaa">Web 공식 사이트</a>    
+        <iframe src="" name="aaa"></iframe>
+        
+        <br><br><br><hr>
+
+        <!-- iframe의 경계선 없애기 : frameborder-->
+        <iframe src="../Day02/02text.html" frameborder="0" width="100%" height="1000"></iframe>
+
+        <br><br><hr>
+
+        <!-- div : divide 논리적 영역 구분 -->
+        <div style="background-color: burlywood; border: 10px solid cadetblue; padding-left: 100px;">
+            <h2>Title</h2>
+            <p>This is subtitle</p>
+        </div>
+
+        <!-- div : Block요소 이기에 width가 match-parent-->
+        <p>
+            안녕하세요 나는 <div style="color: cornflowerblue;">길동길동</div> 홍길동 입니다.
+        </p>
+        <!-- ∴ span : inline element인 영역 구분 태그  -->
+        <p>
+            안녕하세요 나는 <span style="color: cornflowerblue;">길동길동</span> 홍길동 입니다.
+        </p>
+
+        <!-- div의 대표적인 사용 유형 : 웹사이트 기본 레이아웃 구조 잡을 때 -->
+        <div id="header" style="background-color: darkkhaki; height: 30px;">header</div>
+        <div id="content" style="background-color: rgb(115, 146, 115); height: 100px;">content</div>
+        <div id="footer" style="background-color: rgb(120, 120, 214); height: 20px;">footer</div>
+
+    </body>
+</html>

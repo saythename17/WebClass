@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            //String 
+
+            var a='aaa'//문자형
+            var b=new String('aaa')//객체형
+            function print(a){document.write(a+'<br>')}
+            print(typeof(a))
+            print(typeof(b))
+            print(a==b)
+            print(a===b)
+
+            //String methods
+            var s='Hello World!!!'//자동으로 string으로 wrapping
+            print(s.length)
+            print(s.charAt(0))
+            print(s.toUpperCase())
+            print(s.toLowerCase())
+
+            print(s)//원본은 바뀌지 않음
+            //글자 결합 concat / s +'...'
+            print(s.concat('Nice'))
+            print(s.indexOf('W'))
+            print(s.indexOf('H'))
+            print(s.indexOf('llo'))
+            print(s.indexOf('?'))//없으면(못찾으면) : -1 리턴
+
+            //문자열내에 특정문자가 있는지 탐색하는 기능 match
+            var str='Hello world! Nice to meet you. 안녕하세요. 반갑습니다. Nice work! nice study'
+            var search=str.match(/Hello/)//찾아진 결과의 문자열을 리턴
+            print("탐색결과 : "+search)
+
+            var search=str.match(/hello/)//대소문자 구별- 안맞으면 null
+            print("탐색결과 : "+search)
+
+            var search=str.match(/hello/i)//insensitive : 대소문자 구별없이 비교
+            print("탐색결과 : "+search)
+            
+            //여러글자 찾기
+            var search=str.match(/Nice/)
+            print("탐색결과 : "+search)
+
+            var search=str.match(/Nice/g)//여러글자를 찾고 싶다면 g
+            print("탐색결과 : "+search)
+            print(search.length) //리턴된 search :배열
+
+            //대소문자 구별없이 여러개 찾기
+            var search=str.match(/Nice/ig)
+            print("탐색결과 : "+search)
+
+            //한글찾기
+            var search=str.match(/안녕/)//한글은 i가 필요없음
+            print("탐색결과 : "+search)
+
+            //글짜 바꾸기
+            var s='Hello world'
+            print(s.replace('world','android'))
+
+            //대소문자 구별없이 대체하고 싶다면
+            print(s.replace(/worLD/i, 'IOS'))
+
+            //문자열안에 특정단어가 여러개
+            var str='Hello world, nice world, good world, bad world.'
+            print(str.replace(/world/i,'android'))//첫번째 world만 바뀜
+            print(str.replace(/world/ig,'android'))//모든 world가 바뀜
+            //→2이를 이용하여 비속어를 xxx로 변경처리 자동화 가능
+
+            //문자열 잘라서 배열로 만들기
+            var s='one,two,three,four,five'
+            print(s.split(',').length)//문자열 배열이 리턴됨
+            print(s.split(',')[0])
+            print(s.split(',')[1])
+            print(s.split(',')[2])
+            print(s.split(',')[3])
+            print(s.split(',')[4])
+            print(typeof(s.split()))
+
+
+            var s='This is test'
+            print(s.bold())//bold체로 --<b></b>
+            print(s.italics())
+            print(s.fontcolor('green'))
+            print(s.link('http://www.naver.com'))
+        </script>
+    </head>
+</html>

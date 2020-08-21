@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ex</title>
+        <meta charset="utf-8">
+        <style>
+            p#w{
+                background-color: burlywood;
+                min-width: 800px;
+                min-height: 200px;
+            }
+
+            /* overflow : 흘러넘치다 */
+            #target{
+                border: 1px solid mediumblue;
+                width: 300px; height: 100px;
+                overflow: hidden;/*안드로이드 linear처럼 넘치는 content는 안보임*/
+                overflow: scroll;/*무조건 scroll보임*/
+                overflow: auto;/*scroll이 필요할때만 보임*/
+            }
+            #target p{
+                background-color: cadetblue;
+                width: 200px; height: 50px;
+            }
+
+            div.aa{
+                border: 3px dotted mediumorchid;
+                width: 300px; height: 100px;
+                overflow: auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 요소 크기 -->
+        <p id="w">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nostrum nulla accusantium ullam voluptatem maxime perferendis quis totam deleniti assumenda vel quod nihil, est nisi, saepe necessitatibus, autem a adipisci.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nostrum nulla accusantium ullam voluptatem maxime perferendis quis totam deleniti assumenda vel quod nihil, est nisi, saepe necessitatibus, autem a adipisci.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nostrum nulla accusantium ullam voluptatem maxime perferendis quis totam deleniti assumenda vel quod nihil, est nisi, saepe necessitatibus, autem a adipisci.
+        </p>
+        <hr>
+
+        <!-- overflow -->
+        <div id="target">
+            <p>block#1</p>
+            <p>block#2</p>
+            <p>block#3</p>
+            <p>block#4</p>
+            <p>block#5</p>
+        </div>
+
+        <div class="aa">
+            <img src="./pome.png" alt="">
+        </div>
+        <hr>
+
+        <!-- z-index : element들이 놓여지는 순서 -->
+        <div id="box1">box#1</div>
+        <div id="box2">box#2</div>
+        <div id="box3">box#3</div>
+
+        <!-- z-index style 
+        숫자가 클수록 레이아웃이 앞에 있음-->
+        <style>
+            #box1{
+                position: absolute;
+                top: 0px; left: 0px;
+                width: 100px; height: 100px;
+                background-color: mediumorchid;
+                z-index: 2;
+            }
+            #box2{
+                position: absolute;
+                top: 30px; left: 30px;
+                width: 100px; height: 100px;
+                background-color: mediumpurple;
+                z-index: 1;
+            }
+            #box3{
+                position: absolute;
+                top: 60px; left: 60px;
+                width: 100px; height: 100px;
+                background-color: mediumturquoise;
+                z-index: 0;
+            }
+        </style>
+    </body>
+</html>

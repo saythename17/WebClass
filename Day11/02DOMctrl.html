@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM - Document Object Mdel</title>
+    </head>
+    <body>
+        <!-- DOM 노드의 삭제와 동적생성 및 추가 -->
+        <button onclick="addText()">add Text node</button>
+        <button onclick="addElement()">add Element node</button>
+        <button onclick="removeNode()">remove node</button>
+        <p class="pp"></p>
+
+        <script>
+            function addText(){
+                //p요소에 추가할 노드 생성
+                var node = document.createTextNode('This is text')
+                var node = document.createTextNode('<a href="">Google</a>')
+
+                //텍스트노드는 태그문을 추가해도 그냥 text라고 생각(자식요소 추가 불가)
+                var targets=document.getElementsByClassName('pp')            
+                targets[0].appendChild(node)
+
+                //위 작업을 축약으로
+                targets[0].textContent='<a href="">NAVER</a>'
+            }
+
+            function addElement(){
+                var node=document.createElement('a')
+
+                //속성노드 추가
+                var attr=document.createAttribute('href')
+                attr.value="http://www.google.com"
+                node.setAttributeNode(attr)
+
+                //텍스트노드 추가
+                var text=document.createTextNode('Google')
+                node.appendChild(text)//뒤에 append
+
+                //node.insertBefore(text,node.firstChild)//앞으로 붙음
+                //p요소에 a요소 붙이기
+                var targets=document.getElementsByClassName('pp')
+                targets[0].appendChild(node)
+
+                //요소노드 붙이는 작업 -> 축약형
+                targets[0].innerHTML+='<a href="">NAVER</a>'//=대입. 바꿔치기 //+= 기존에 것 뒤에 덧붙이기
+
+            }
+
+            function removeNode(){
+                var target=document.getElementsByClassName('pp')[0]
+                target.removeChild(target.firstChild)
+            }
+        </script>
+        <hr>
+
+        
+
+
+
+        <!-- 요소찾는 기법 NEW! - CSS의 선택자 이용 -->
+
+        <h4 id="aaa">aaa</h4>
+        <h4 class="bbb">bbb</h4>
+        <h4>ccc</h4>
+
+        <script>
+            document.querySelector('#aaa')
+            document.querySelector('.bbb')
+            var e=document.querySelector('h4')//한놈만 select
+            var h4s=document.querySelectorAll('h4')//모든 녀석
+            h4s[0].onclick=function(e){alert(e)}//e : MouseEvent 객체
+            h4s[1].onclick=function(){alert('click!')}
+            h4s[2].onclick=function(){alert(this)}//this : 클릭이벤트를 발동한 h4 요소
+        </script>
+        
+    </body>
+</html>

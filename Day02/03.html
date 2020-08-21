@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>03 Example</title>
+        <meta charset="uth-8">
+        <!--└자동으로 브라우저에서 한글을 지원하는 이 코드를 써줌/ data를 위한 data : metadata -->
+    </head>
+
+    <body>
+        <!-- list -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <ol>
+            <li>ddd</li>
+            <li>eee</li>
+            <li>fff</li>
+        </ol>
+
+        <dl>
+            <dt>This is Title</dt>
+            <dd>-This is Definition Data</dd>
+            <dt>This is Title</dt>
+            <dd>-This is Definition Data</dd>
+            <dt>This is Title</dt>
+            <dd>-This is Definition Data</dd>
+        </dl>
+
+        <!-- <a> anchor (inline element) -->
+        <a href="http://www.naver.com" target="_self">NAVER [절대경로지정]</a>
+        <br>
+        <a href="./02text_ex.html" target="_blank">COFFEE[상대경로지정]</a>
+        <!-- ./:현재폴더 ../:상위폴더 -->
+        <a href="../Day01/index.html" target="_top">다른 폴더 안 상대주소</a>
+        <br>
+        <a href="#help">도움말 위치로</a>
+        <hr>
+        <h4 id="help">도움말</h4>
+        
+        <!-- anchor 요소를 한줄에 하나씩 배치할때는 아래와 같은 방식을 선호 : 요소 안에 요소 배치 -->
+        <p><a href="">aaa</a></p>
+        <p><a href="">aaa</a></p>
+
+        <ul>
+            <li><a href="">111</a></li>
+            <li><a href="">222</a></li>
+        </ul>
+
+        <!-- anchor로 email link 연결 가능 -->
+        <p><a href="mailto:zion.h719@gmail.com">zion.h719@gmail.com</a></p>
+
+        <!-- anchor로 이미지 보기  -->
+        <p><a href="http://www.sommeliertimes.com/news/photo/202003/15921_33772_249.jpg" target="_self">이미지 링크</a></p>
+        <p><a href="./img/giphy (1).gif">&gt;zzZㅇㅅㅇ&lt;</a></p>
+
+        <!-- download : 이미지나 .html 문서가 아닌경우의 링크 :  download link -->
+        <p><a href="http://mrhi2020.dothome.co.kr/aaa.zip">한글문서 다운로드</a></p>
+
+        <!-- <img> 는 empty & inline element -->
+        <!-- 상대경로 -->
+        <img src="./img/giphy (1).gif" alt="냐옹" border="2">
+        <!-- alternate : 이미지파일이 존재하지 않을경우 나오는 text -->
+        <p><img src="./aaa.jpg" alt="냐옹"></p>
+        <!-- 절대경로 -->
+        <img src="https://post-phinf.pstatic.net/MjAxOTA4MzBfMjY1/MDAxNTY3MTQ5ODUyMjIz.WR3eIHPD4mcmcOptMtE0aIXFexAsKhZvTb9Ahs77ff8g.s050HZxtAJ08n5P4UHf8lYj01MYESkrhTHxA8Qz9mHMg.JPEG/04a.jpg?type=w1200" 
+        alt="애용~" width="300">
+
+    </body>
+</html>

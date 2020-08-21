@@ -1,0 +1,66 @@
+/* Web */
+
+/* default */
+*{margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif;}
+ul{list-style: none;}
+a{text-decoration: none;}
+
+/* set page position to center */
+#page{width: 820px; margin-left: auto; margin-right: auto;}
+
+
+
+
+
+header{
+    width: 800px; height: 95px;
+    background-color: #2d3a4b;
+
+    /* 자식요소가 absolute일때 부모요소의 좌상단을 기준점으로 하려면
+    부모의 position이 static(default)면 안됨 */
+    position: relative;
+}
+
+/* Title area -- set the Logo Image position  */
+#logo{
+    position: absolute;
+    top: 30px; left: 30px;
+}
+
+/* Title area -- set the right-up side menu position */
+#top_menu{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    color: white;
+    font-size: 12px;
+}
+#top_menu a{color: white;}
+
+/* Title area -- main navigation menu */
+nav{
+    position: absolute;
+    bottom: 10px; left: 220px;
+    font-size: 16px;
+}
+nav li{
+    display: inline; margin-left: 30px;
+}
+nav li a{color: white;}
+
+/* Content area -- Banner under the main img ->set position inline  */
+#content li{
+    display: inline; margin-left: 50px;
+}
+
+/* footer */
+footer{
+    width: 800px;
+    height: 90px;
+    margin-top: 20px;
+    background-color: #f1f1f1;
+}
+
+footer img{
+    margin: 10px 0 0 60px;
+}
